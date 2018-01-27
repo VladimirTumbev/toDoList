@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1741841a-67e2-410f-80ab-227a53fab8e7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/style/base.css" afterPath="$PROJECT_DIR$/style/base.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -17,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="buttons.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="buttons.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/buttons.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="63">
@@ -37,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/style/base.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="691">
-              <caret line="410" column="17" lean-forward="false" selection-start-line="410" selection-start-column="17" selection-end-line="410" selection-end-column="17" />
+            <state relative-caret-position="290">
+              <caret line="389" column="0" lean-forward="true" selection-start-line="389" selection-start-column="0" selection-end-line="389" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -52,6 +51,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>head</find>
+      <find>HEAD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,12 +142,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1517069924604</updated>
-      <workItem from="1517069925738" duration="1320000" />
+      <workItem from="1517069925738" duration="1471000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1320000" />
+    <option name="totallyTimeSpent" value="1471000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="29" width="1938" height="1060" extended-state="6" />
@@ -191,10 +191,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buttons.html">
+    <entry file="file://$PROJECT_DIR$/style/base.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="5" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="5" />
+        <state relative-caret-position="290">
+          <caret line="389" column="0" lean-forward="true" selection-start-line="389" selection-start-column="0" selection-end-line="389" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -207,10 +207,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/style/base.css">
+    <entry file="file://$PROJECT_DIR$/buttons.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
-          <caret line="410" column="17" lean-forward="false" selection-start-line="410" selection-start-column="17" selection-end-line="410" selection-end-column="17" />
+        <state relative-caret-position="63">
+          <caret line="3" column="5" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="5" />
           <folding />
         </state>
       </provider>
