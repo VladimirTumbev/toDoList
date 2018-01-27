@@ -1,0 +1,91 @@
+/* CSS RESET
+----------------------------------- */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+* {
+    box-sizing: border-box;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* CSS Base
+----------------------------------- */
+body {
+    font-size: 16px;
+    font-family: Helvetica, sans-serif;
+}
+p {
+    font-size: 1em;
+}
+div.container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 0px 15px;
+}
+
+
+/* Inputs
+----------------------------------- */
+input.input {
+    width: 100%;
+    padding: 5px 9px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 3px;
+}
+
+/* Inputs
+----------------------------------- */
+input.input {
+    width: 100%;
+    padding: 5px 9px;
+    border: 1px solid rgb(219, 219, 219);
+    background-color: white;
+    border-radius: 2px;
+    color: #363636;
+    height: 36px;
+}
+
+input.input:active {
+    border-color: #3273dc;
+}
