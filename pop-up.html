@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+
+<header>
+    <div class="header-container">
+        <div class="nav-bar">
+            <div class="container">
+                <input type="image" src="/resources/profile.png" alt="submit" name="submit">
+                <img class="logo" src="/resources/logoV3.png" alt="Booking.js Logo">
+                <button class="button pop-up-open" data-target="#addTaskPopUpNav">
+                    +
+                </button>
+                <div class="pop-up-container hidden" id="addTaskPopUpNav">
+                    <div class="pop-up-body">
+                        <p> This is the pop-up body </p>
+                    </div>
+                    <button class="button pop-up-add">Add</button>
+                    <button class="button pop-up-close" data-target="#addTaskPopUpNav">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <label class="check-box-container">
+        <input type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+    </label>
+
+<script src="./js/pop-up.js"></script>
