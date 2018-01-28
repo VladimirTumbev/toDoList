@@ -405,17 +405,6 @@ a.dropdown-item.is-active {
     height: 1px;
     margin: 0.5rem 0;
 }
-
-
-div.header-container {
-    width: 100%;
-    height: 50px;
-    position: fixed;
-    margin: 0 auto;
-    background-color: #f1f1f1;
-}
-
-
 /* CSS custom checkbox
 ----------------------------------- */
 
@@ -479,33 +468,6 @@ span.checkmark {
 .check-box-container:hover input:checked+.checkmark {
     background-color: rgb(238, 240, 240);
     opacity: 1;
-}
-
-/* CSS HEADER */
-
-div.header-container {
-    width: 100%;
-    height: 50px;
-    position: fixed;
-    margin: 0 auto;
-    background-color: #f1f1f1;
-}
-
-
-/* /* CSS Logo / Imgs
------------------------------------ */
-
-img.logo {
-    position: relative;
-    width: auto;
-    height: 95%;
-    border-radius: 12px;
-}
-
-input[type=image] {
-    width: auto;
-    height: 100%;
-    float: right;
 }
 
 /* CSS pop-up
