@@ -89,3 +89,7 @@ input.input {
 input.input:active {
     border-color: #3273dc;
 }
+
+.hidden {
+    display: none !important;
+}
