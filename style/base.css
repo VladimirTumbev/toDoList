@@ -405,8 +405,87 @@ a.dropdown-item.is-active {
     height: 1px;
     margin: 0.5rem 0;
 }
+/* CSS custom checkbox
+----------------------------------- */
+
+.check-box-container {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.check-box-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    margin: 0px;
+}
+
+span.checkmark {
+    display: inline-block;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    border-radius: 16px;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 3px;
+    width: 3px;
+    height: 7px;
+    border: solid rgb(80, 79, 79);
+    border-width: 0 1.5px 1.5px 0;
+    -webkit-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    transform: rotate(40deg);
+}
+
+.check-box-container input:checked+.checkmark {
+    background-color: #f1f1f1;
+}
+
+.check-box-container input:hover+.checkmark:after {
+    display: block;
+    opacity: 0.6;
+}
+
+.check-box-container input:checked+.checkmark:after {
+    display: block;
+    opacity: 1;
+}
+
+.check-box-container:hover .checkmark {
+    background-color: rgb(238, 240, 240);
+    opacity: 0.6;
+}
+
+.check-box-container:hover input:checked+.checkmark {
+    background-color: rgb(238, 240, 240);
+    opacity: 1;
+}
+
+/* CSS pop-up
+----------------------------------- */
+.pop-up-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+button.pop-up-open {
+    float: right;
+}
+
 
 .hidden {
     display: none !important;
-    color: orange;
 }
