@@ -1,1 +1,7 @@
 @import "base.css";
+@import "./components/_header.css";
+@import "./components/_checkbox.css";
+@import "./components/_buttons.css";
+@import "./components/_popUp.css";
+@import "./components/_dropDown.css";
+@import "./components/_tabs.css";

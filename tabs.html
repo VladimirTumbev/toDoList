@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project ToDoList</title>
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
+</head>
+
+<body>
+    <!-- Tabs -->
+    <div class='tab-menu'>
+
+        <div class='tabs is-boxed'>
+            <ul>
+                <li data-panelid='#panel1' class='is-active'>Projects</li>
+                <li data-panelid='#panel2'>Filters</li>
+                <li data-panelid='#panel3'>Completed</li>
+            </ul>
+        </div>
+
+        <div class='tab-content'>
+            <div class='tab-pane' id='panel1'>
+                <a href="">Project 1</a>
+                <a href="">Project 2</a>
+                <a href="">Project 3</a>
+            </div>
+            <div class='tab-pane hidden' id='panel2'>
+                <a href="">Overdue</a>
+                <a href="">Today</a>
+                <a href="">Tomorrow</a>
+                <a href="">This week</a>
+            </div>
+            <div class='tab-pane hidden' id='panel3'>
+                <a href="">Arc Project 1</a>
+                <a href="">Arc Project 2</a>
+                <a href="">Arc Project 3</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./js/tabs.js"></script>
+</body>
+
+</html>
