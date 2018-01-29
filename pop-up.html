@@ -11,30 +11,67 @@
 </head>
 
 <header>
-    <div class="header-container">
-        <div class="nav-bar">
-            <div class="container">
-                <input type="image" src="/resources/profile.png" alt="submit" name="submit">
-                <img class="logo" src="/resources/logoV3.png" alt="Booking.js Logo">
-                <button class="button pop-up-open" data-target="#addTaskPopUpNav">
-                    +
-                </button>
-                <div class="pop-up-container hidden" id="addTaskPopUpNav">
-                    <div class="pop-up-body">
-                        <p> This is the pop-up body </p>
+    <div class="container header-container">
+        <div class="header-left">
+            <img class="logo" src="/assets/images/logoV3.png" alt="Booking.js Logo">
+            <div class='dropdown is-active'>
+                <div class='dropdown-triger'>
+                    <button class='button'>
+                        <span class='value-of-select'>Select task</span>
+                        <span class="icon is-small">
+                            <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
+                                role="img" viewBox="0 0 320 512">
+                                <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
+                            </svg>
+                            <!-- <i class="fas fa-angle-down" aria-hidden="true"></i> -->
+                        </span>
+                    </button>
+                </div>
+                <div class='dropdown-menu hidden'>
+                    <div class='dropdown-content'>
+                        <a href="#Add task 1" class='dropdown-item'>Task 1</a>
+                        <a href="#Add task 2" class='dropdown-item is-active'>Task 2</a>
+                        <a href="#Add task 3" class='dropdown-item'>Task 3</a>
+                        <a href="#Add task 4" class='dropdown-item'>Task 4</a>
+                        <hr class="dropdown-divider">
+                        <a href="#Add task 5" class='dropdown-item'>Task 5</a>
                     </div>
-                    <button class="button pop-up-add">Add</button>
-                    <button class="button pop-up-close" data-target="#addTaskPopUpNav">Close</button>
                 </div>
             </div>
+
+        </div>
+        <div class="header-right">
+            <button class="button is-info is-rounded pop-up-open" data-target="#addTaskPopUpNav">
+                +
+            </button>
+            <input type="image" src="/assets/images/profile.png" alt="submit" name="submit">
         </div>
     </div>
 </header>
 
+<div class="pop-up-shadow fade" id="addTaskPopUpNav">
+    <div class="pop-up-dialog">
+        <div class="pop-up-content">
+            <div class="pop-up-header">
+                <h2>Add a new task</h2>
+                <button class="button pop-up-close" data-target="#addTaskPopUpNav">
+                    <span>x</span>
+                </button>
+            </div>
+            <div class="pop-up-body">
+                <p> This is the pop-up body </p>
+            </div>
+            <div class="pop-up-footer">
+                <button class="button pop-up-add">Add</button>
+                <button class="button pop-up-close" data-target="#addTaskPopUpNav">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <label class="check-box-container">
-        <input type="checkbox" checked="checked">
-        <span class="checkmark"></span>
-    </label>
+<label class="check-box-container">
+    <input type="checkbox" checked="checked">
+    <span class="checkmark"></span>
+</label>
 
 <script src="./js/pop-up.js"></script>

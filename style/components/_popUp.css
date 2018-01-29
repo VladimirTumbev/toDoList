@@ -1,0 +1,92 @@
+/* CSS pop-up
+----------------------------------- */
+
+.pop-up-shadow {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1072;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+}
+
+.pop-up-dialog {
+    width: auto;
+    margin: 5em auto;
+    max-width: 950px;
+    height: 90%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+div.pop-up-content {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 0.5em;
+    flex-direction: column;
+    display: flex;
+}
+
+div.pop-up-body {
+    width: 80%;
+    height: 80%;
+    margin: 45px auto;
+    background-color: black;
+    border-radius: 5%;
+    text-align: center;
+}
+
+div.pop-up-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 1px solid #e9ecef;
+}
+
+div.pop-up-header h2 {
+    margin: 10px;
+    line-height: 2;
+    font-size: 2em;
+    font-weight: 500;
+    text-align: left;
+
+}
+
+div.pop-up-footer button {
+    bottom: 0;
+    right: 0;
+}
+
+div.pop-up-header button {
+    padding: 1em;
+    margin: 0em 0.5em 0.5em auto;
+    border: none;
+    line-height: 1;
+    color: #000;
+    font-size: 1.5em;
+    cursor: pointer;
+    background-color: transparent;
+    opacity: 0.5;
+    font-weight: 900;
+}
+
+div.pop-up-header button:hover {
+    opacity: 1;
+}
+
+div.fade.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hidden {
+    display: none !important;
+}

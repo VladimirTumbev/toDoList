@@ -1,10 +1,10 @@
 $(function (){
     $('.pop-up-open').on('click', function(){
         var popUpDiv = $(this).data('target');
-        $(popUpDiv).removeClass('hidden');
+        $(popUpDiv).toggleClass('show');
     });
     $('.pop-up-close').on('click', function(){
         var popUpDiv = $(this).data('target');
-        $(popUpDiv).addClass('hidden');
+        $(popUpDiv).toggleClass('show');
     });
 });
