@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-container">
+            <div class="header-left">
+                <img class="logo" src="assets/images/logoV3.png" alt="Booking.js Logo">
+                <div class='dropdown is-active'>
+                    <div class='dropdown-triger'>
+                        <button class='button'>
+                            <span class='value-of-select'>Select task</span>
+                            <span class="icon is-small">
+                                <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
+                                    role="img" viewBox="0 0 320 512">
+                                    <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
+                                </svg>
+                                <!-- <i class="fas fa-angle-down" aria-hidden="true"></i> -->
+                            </span>
+                        </button>
+                    </div>
+                    <div class='dropdown-menu hidden'>
+                        <div class='dropdown-content'>
+                            <a href="#Add task 1" class='dropdown-item'>Project 1</a>
+                            <a href="#Add task 2" class='dropdown-item is-active'>Task 2</a>
+                            <a href="#Add task 3" class='dropdown-item'>Task 3</a>
+                            <a href="#Add task 4" class='dropdown-item'>Task 4</a>
+                            <hr class="dropdown-divider">
+                            <a href="#Add task 5" class='dropdown-item'>Task 5</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="header-right">
+                <button class="button is-info is-rounded pop-up-open" data-target="#addTaskPopUpNav">
+                    +
+                </button>
+                <div class='dropdown'>
+                    <div class='dropdown-triger'>
+                        <input type="image" src="assets/images/profile.png" alt="submit" name="submit">
+                        </button>
+                    </div>
+                    <div class='dropdown-menu hidden'>
+                        <div class='dropdown-content'>
+                            <a href="#Account" class='dropdown-item'>
+                                <img class="avatar-small" src="assets/images/profile.png" alt="profile picture"> Account</a>
+                            <a href="#LogOut" class='dropdown-item'>
+                                <img class="avatar-small" src="assets/images/profile.png" alt="profile picture"> Log-out</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <script src="./js/modules/_pop-up.js"></script>
+    <script src="./js/modules/_dropdown.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
