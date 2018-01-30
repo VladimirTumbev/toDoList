@@ -1,4 +1,5 @@
 /* Collapse Tab */
+
 .container {
     float: left;
     width: 50%;
@@ -17,13 +18,13 @@ div {
     overflow: hidden;
 }
 
-input {
+.tab input {
     position: absolute;
     opacity: 0;
     z-index: -1;
-  }
+}
 
-  label {
+.tab label {
     position: relative;
     display: block;
     padding: 0 0 0 1em;
@@ -31,26 +32,26 @@ input {
     font-weight: bold;
     line-height: 3;
     cursor: pointer;
-  }
+}
 
-  .tab-content {
+.tab-content {
     max-height: 0;
     overflow: hidden;
     background: white;
     -webkit-transition: max-height .35s;
     -o-transition: max-height .35s;
     transition: max-height .35s;
-  }
+}
 
-  .tab-content p {
+.tab-content p {
     margin: 1em;
-  }
+}
 
-  input:checked ~ .tab-content {
+input:checked~.tab-content {
     max-height: 100%;
-  }
+}
 
-  label::after {
+label::after {
     position: absolute;
     right: 0;
     top: 0;
@@ -62,12 +63,12 @@ input {
     -webkit-transition: all .35s;
     -o-transition: all .35s;
     transition: all .35s;
-  }
+}
 
-  input[type=checkbox] + label::after {
+input[type=checkbox]+label::after {
     content: "+";
-  }
+}
 
-  input[type=checkbox]:checked + label::after {
+input[type=checkbox]:checked+label::after {
     transform: rotate(315deg);
-  }
+}
