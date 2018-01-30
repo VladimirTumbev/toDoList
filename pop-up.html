@@ -10,68 +10,138 @@
     <link rel="stylesheet" href="../style/style.css">
 </head>
 
-<header>
-    <div class="container header-container">
-        <div class="header-left">
-            <img class="logo" src="/assets/images/logoV3.png" alt="Booking.js Logo">
-            <div class='dropdown is-active'>
-                <div class='dropdown-triger'>
-                    <button class='button'>
-                        <span class='value-of-select'>Select task</span>
-                        <span class="icon is-small">
-                            <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
-                                role="img" viewBox="0 0 320 512">
-                                <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
-                            </svg>
-                            <!-- <i class="fas fa-angle-down" aria-hidden="true"></i> -->
-                        </span>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="header-left">
+                <img class="logo" src="/assets/images/logoV3.png" alt="Booking.js Logo">
+                <div class='dropdown is-active'>
+                    <div class='dropdown-triger'>
+                        <button class='button'>
+                            <span class='value-of-select'>Select task</span>
+                            <span class="icon is-small">
+                                <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
+                                    role="img" viewBox="0 0 320 512">
+                                    <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
+                                </svg>
+                                <!-- <i class="fas fa-angle-down" aria-hidden="true"></i> -->
+                            </span>
+                        </button>
+                    </div>
+                    <div class='dropdown-menu hidden'>
+                        <div class='dropdown-content'>
+                            <a href="#Add task 1" class='dropdown-item'>Task 1</a>
+                            <a href="#Add task 2" class='dropdown-item is-active'>Task 2</a>
+                            <a href="#Add task 3" class='dropdown-item'>Task 3</a>
+                            <a href="#Add task 4" class='dropdown-item'>Task 4</a>
+                            <hr class="dropdown-divider">
+                            <a href="#Add task 5" class='dropdown-item'>Task 5</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="header-right">
+                <button class="button is-info is-rounded pop-up-open" data-target="#addTaskPopUpNav">
+                    +
+                </button>
+                <input type="image" src="/assets/images/profile.png" alt="submit" name="submit">
+            </div>
+        </div>
+    </header>
+
+    <div class="pop-up-shadow fade" id="addTaskPopUpNav">
+        <div class="pop-up-dialog">
+            <div class="pop-up-content">
+                <div class="pop-up-header">
+                    <h2>Add a new task</h2>
+                    <button class="button pop-up-close" data-target="#addTaskPopUpNav">
+                        <span>x</span>
                     </button>
                 </div>
-                <div class='dropdown-menu hidden'>
-                    <div class='dropdown-content'>
-                        <a href="#Add task 1" class='dropdown-item'>Task 1</a>
-                        <a href="#Add task 2" class='dropdown-item is-active'>Task 2</a>
-                        <a href="#Add task 3" class='dropdown-item'>Task 3</a>
-                        <a href="#Add task 4" class='dropdown-item'>Task 4</a>
-                        <hr class="dropdown-divider">
-                        <a href="#Add task 5" class='dropdown-item'>Task 5</a>
+                <div class="pop-up-body">
+                    <div class="form-group">
+                        <input type="text" class="input" id="new-task-name" placeholder="Add a new task">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="input-medium" id="add-to-project" placeholder="Add to #project">
+                        <div class='dropdown'>
+                            <div class='dropdown-triger'>
+                                <button class='button'>
+                                    <span class='value-of-select'>Select Priority</span>
+                                    <span class="icon is-small">
+                                        <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
+                                            role="img" viewBox="0 0 320 512">
+                                            <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class='dropdown-menu hidden'>
+                                <div class='dropdown-content'>
+                                    <a href="#" class='dropdown-item'>Priority 1</a>
+                                    <a href="#" class='dropdown-item'>Priority 2</a>
+                                    <a href="#" class='dropdown-item'>Priority 3</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="input-medium" id="due-date" placeholder="Due Date">
+                        <input type="text" class="input-medium" id="reminder" placeholder="Reminder">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="input" id="description" cols="100" rows="10">Add a description</textarea>
+                    </div>
+                    <div class="form-group comment">
+                        <div class="avatar-user">
+                            <img class="avatar-medium" src="../assets/images/profile.png" alt="Profile Picture">
+                            <label id="user-name">Iron Man</label>
+                        </div>
+                        <div class="label-textarea">
+                            <label for="comment">Comment</label>
+                            <textarea class="input" id="description" cols="80" rows="10">Add a comment</textarea>
+                        </div>
+                        <div class="save-comment">
+                            <button class="button is-info is-medium">Save</button>
+                        </div>
+
+                        <div class="pop-up-commments-section">
+                            <div class="comment">
+                                <div class="comment-desc">
+                                    <div class="comment-creator">
+                                        <span class="comment-creator-name">Iron Man</span>
+                                    </div>
+                                    <img class="avatar-small" src="../assets/images/profile.png" alt="Avatar Small">
+                                    <div class="comment-container">
+                                        <div class="current-comment">
+                                            <p>Iron Man is better than Batman</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="comment-date-time">
+                                    Jan 28 at 4:46 PM
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pop-up-footer">
+                        <button class="button pop-up-add is-success is-medium">Add</button>
+                        <button class="button pop-up-close is-medium is-danger" data-target="#addTaskPopUpNav">Close</button>
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="header-right">
-            <button class="button is-info is-rounded pop-up-open" data-target="#addTaskPopUpNav">
-                +
-            </button>
-            <input type="image" src="/assets/images/profile.png" alt="submit" name="submit">
-        </div>
-    </div>
-</header>
 
-<div class="pop-up-shadow fade" id="addTaskPopUpNav">
-    <div class="pop-up-dialog">
-        <div class="pop-up-content">
-            <div class="pop-up-header">
-                <h2>Add a new task</h2>
-                <button class="button pop-up-close" data-target="#addTaskPopUpNav">
-                    <span>x</span>
-                </button>
-            </div>
-            <div class="pop-up-body">
-                <p> This is the pop-up body </p>
-            </div>
-            <div class="pop-up-footer">
-                <button class="button pop-up-add">Add</button>
-                <button class="button pop-up-close" data-target="#addTaskPopUpNav">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+        <label class="check-box-container">
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+        </label>
 
-<label class="check-box-container">
-    <input type="checkbox" checked="checked">
-    <span class="checkmark"></span>
-</label>
+        <script src="./js/modules/_pop-up.js"></script>
+        <script src="./js/modules/_dropdown.js"></script>
+        <script src="./js/main.js"></script>
+</body>
 
-<script src="./js/pop-up.js"></script>
+</html>
