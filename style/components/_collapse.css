@@ -1,0 +1,73 @@
+/* Collapse Tab */
+.container {
+    float: left;
+    width: 50%;
+    padding: 0 1em;
+}
+
+div {
+    display: block;
+}
+
+.tab {
+    position: relative;
+    margin-bottom: 1px;
+    width: 100%;
+    color: #4a4a4a;
+    overflow: hidden;
+}
+
+input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  label {
+    position: relative;
+    display: block;
+    padding: 0 0 0 1em;
+    background: whitesmoke;
+    font-weight: bold;
+    line-height: 3;
+    cursor: pointer;
+  }
+
+  .tab-content {
+    max-height: 0;
+    overflow: hidden;
+    background: white;
+    -webkit-transition: max-height .35s;
+    -o-transition: max-height .35s;
+    transition: max-height .35s;
+  }
+
+  .tab-content p {
+    margin: 1em;
+  }
+
+  input:checked ~ .tab-content {
+    max-height: 100%;
+  }
+
+  label::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+  }
+
+  input[type=checkbox] + label::after {
+    content: "+";
+  }
+
+  input[type=checkbox]:checked + label::after {
+    transform: rotate(315deg);
+  }
