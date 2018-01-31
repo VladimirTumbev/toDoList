@@ -18,10 +18,22 @@ var dataBase = (function () {
                 return false;
             }
         }
+
+        return true;
     };
 
+    var addProject = function(project) {
+        if (typeof projects[project] === 'undefined') {
+            projects[project] = [];
+            overwriteData();
+        } else {
+            return 'The"' + project + '" already exist';
+        }
+    }
+
     var addTask = function ( object ) {
-        if (!checkObjectOfTask()) {
+        debugger;
+        if (!checkObjectOfTask(object)) {
             return 'Something went wrong!'
         }
 
@@ -31,7 +43,8 @@ var dataBase = (function () {
 
             // Check weather theProject is empty object
             if (typeof projects[theProject] === 'undefined') {
-                projects[theProject] = [];
+                return "This project dosen't exist";
+                // projects[theProject] = [];
             }
 
             object.id =  ( projects[theProject].length + 1 );
@@ -83,7 +96,7 @@ var dataBase = (function () {
     };
 
     var editTask = function (project, id, object) {
-        if (!checkObjectOfTask()) {
+        if (!checkObjectOfTask(object)) {
             return 'Something went wrong!'
         }
 
@@ -99,6 +112,7 @@ var dataBase = (function () {
         getTaskById: getTaskById,
         setTaskStatement: setTaskStatement,
         editTask: editTask,
+        addProject: addProject,
     }
 })();
 
@@ -114,15 +128,4 @@ var dataBase = (function () {
 //     this.statement = statement;
 //     this.deleted = false;
 // }
-// var createToDo = function(taskName, projects, dueDate, reminder, description, comments) {
-//
-//     return {
-//         taskName: taskName,
-//         projects: projects,
-//         dueDate : dueDate,
-//         reminder: reminder,
-//         description: description,
-//         comments: comments
-//     };
-//
-// };
+// let newTask = new Task('Otidi do magazina', ['Shopping'], 'P2', 'dasda', 'dasdsa', 'Otidi do magazina', [], false);

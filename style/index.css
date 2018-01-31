@@ -1,0 +1,29 @@
+div.index-page {
+    padding-top: 44px;
+}
+
+.index-page .left-bar,
+.index-page .content-box {
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid grey;
+    min-height: 200px;
+    margin-top: 30px;
+}
+
+
+.index-page .left-bar {
+    width: 30%;
+}
+
+.index-page .content-box {
+    width: 70%;
+}
+
+@media only screen and (max-width: 576px) {
+    .index-page .left-bar,
+    .index-page .content-box {
+        display: block;
+        width: 100%;
+    }
+}

@@ -34,14 +34,14 @@
 
         openClose();
 
-        $(document).on('click', function (e) {
+        $(document).on('click', function () {
             if (isOut) {
                 $this.find('.dropdown-menu').addClass('hidden');
                 isOut = false;
             }
         });
     });
-})();
+});
 
 $(function() {
     $('.dropdown').dropdown();
