@@ -18,8 +18,6 @@
             // Change active Element
             $dropDownElements.removeClass('is-active');
             $(this).addClass('is-active');
-
-            // Change the Value after click
             var dropdownListText = $(this).text();
             $this.find('.value-of-select').text(dropdownListText);
         });
