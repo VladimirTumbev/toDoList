@@ -5,7 +5,7 @@ var dataBase = (function () {
         localStorage.setItem("projects", JSON.stringify( projects ));
     };
 
-    if (!localStorage.getItem( "projects" )) {
+    if (!localStorage.getItem( "projects" )) {  // what is this part for?
         overwriteData();
     } else {
         projects = JSON.parse(localStorage.getItem( 'projects' ));
@@ -105,14 +105,14 @@ var dataBase = (function () {
 
     return {
         addTask: addTask,
-        clearAll: clearAll,
-        deleteTask: deleteTask,
-        getAllProjects: getAllProjects,
-        getTasksByProject: getTasksByProject,
-        getTaskById: getTaskById,
-        setTaskStatement: setTaskStatement,
         editTask: editTask,
+        deleteTask: deleteTask,
+        getTaskById: getTaskById,
+        getTasksByProject: getTasksByProject,
+        setTaskStatement: setTaskStatement,
         addProject: addProject,
+        getAllProjects: getAllProjects,
+        clearAll: clearAll,
     }
 })();
 
