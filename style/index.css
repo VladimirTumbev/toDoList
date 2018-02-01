@@ -1,29 +1,85 @@
-div.index-page {
-    padding-top: 44px;
+html, body {
+    height: 100%;
 }
 
+body {
+    background-color: #fafafa;
+}
+
+
+/* Site architecture
+-----------------------------*/
+div.index-page {
+    padding-top: 44px;
+    height: 100%;
+}
 .index-page .left-bar,
 .index-page .content-box {
     display: inline-block;
     vertical-align: top;
-    border: 1px solid grey;
     min-height: 200px;
-    margin-top: 30px;
+    height: 100%;
 }
-
 
 .index-page .left-bar {
     width: 30%;
+    border-right: 1px solid #f1f1f1;
 }
-
 .index-page .content-box {
     width: 70%;
+    background-color: #ffffff;
+    padding: 45px 45px;
 }
-
+.index-page .content-box h3 {
+    font-size: 1.300em;
+    color: #0a0a0a;
+    display: inline;
+    margin-right: 10px;
+}
 @media only screen and (max-width: 576px) {
     .index-page .left-bar,
     .index-page .content-box {
         display: block;
         width: 100%;
     }
+}
+
+/* Tasks content
+-----------------------------*/
+.tasks-content {
+    padding-top: 30px;
+}
+.tasks-content .project-title, .tasks-content .project-tasks-status {
+    display: inline;
+    vertical-align: top;
+    margin-right: 10px;
+}
+.tasks-content .task-box {
+    width: 100%;
+    padding: 13px 0px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    position: relative;
+}
+.tasks-content .task-box.complated {
+    opacity: 0.4;
+}
+.tasks-content .task-box:first-of-type {
+    border-top: 1px solid #f0f0f0;
+}
+.tasks-content .task-box > p, .tasks-content .task-box > span {
+    display: inline;
+    vertical-align: middle;
+}
+.tasks-content .task-box > p {
+    font-weight: bold;
+    font-size: 0.800em;
+}
+.tasks-content .task-box > span {
+    font-size: 0.700em;
+    float: right;
+    margin-top: 4px;
+}
+.tasks-content .task-box > span:hover {
+    text-decoration: underline;
 }
