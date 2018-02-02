@@ -33,4 +33,8 @@ $(function () {
         }
     })
 
+    $( "#due-date" ).datepicker();
+    
+    $( "#reminder" ).datepicker();
+
 });

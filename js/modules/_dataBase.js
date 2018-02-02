@@ -42,7 +42,6 @@ var dataBase = (function () {
     };
 
     var addTask = function ( object ) {
-        debugger;
         if (!checkObjectOfTask(object)) {
             return 'Something went wrong!'
         }

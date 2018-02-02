@@ -35,9 +35,7 @@
 
         addComment: function () {
             var values = this.getValues();
-            this.comments.push(values.newComment)
-            values.newComment = '';
-            console.log(this.comments);
+            this.comments.push(values.newComment);
         },
 
         validateData: function () {
