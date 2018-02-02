@@ -127,16 +127,16 @@ var dataBase = (function () {
     }
 })();
 
-// function Task (title, project, priority, dueData, reminder, description, comments, statement) {
-//     this.id = null;
-//     this.title = title;
-//     this.project = project;
-//     this.priority = priority;
-//     this.dueData = dueData;
-//     this.reminder = reminder;
-//     this.description = description;
-//     this.comments = comments;
-//     this.statement = statement;
-//     this.deleted = false;
-// }
+function Task (title, project, priority, dueData, reminder, description, comments, statement) {
+    this.id = null;
+    this.title = title;
+    this.project = project;
+    this.priority = priority;
+    this.dueData = dueData;
+    this.reminder = reminder;
+    this.description = description;
+    this.comments = comments;
+    this.statement = statement;
+    this.deleted = false;
+}
 // let newTask = new Task('Otidi do magazina', ['Shopping'], 'P2', 'dasda', 'dasdsa', 'Otidi do magazina', [], false);
