@@ -2,13 +2,11 @@
 $(function() {
     var generateProjectsList = (function() {
 
-        var getProjects = dataBase.getAllProjects();
+        var projectsList = dataBase.getAllProjects();
 
-        var generate = function(projects) {
-            projects = getProjects;
-
-            var $projectList = $('#panel1');
-            $(projects).each(function(_, project) {
+        var generate = function() {
+            var $projectPanel = $('#panel1');
+            $(projectsList).each(function(_, project) {
 
                 var $myTab = $('<div>').addClass('tab-item')
                 $('<span>').appendTo($myTab).html(project);
@@ -16,7 +14,7 @@ $(function() {
                 $('<input>').attr('type', 'checkbox').appendTo($myLabel)
                 $('<span>').addClass('checkmark').appendTo($myLabel)
                 $myLabel.appendTo($myTab)
-                $myTab.appendTo($projectList);
+                $myTab.appendTo($projectPanel);
             });
         };
 
