@@ -1,14 +1,15 @@
 var dataBase = (function () {
+    debugger;
     var projects = {};
 
     var overwriteData = function () {
         localStorage.setItem("projects", JSON.stringify( projects ));
     };
 
-    if (!localStorage.getItem( "projects" )) {
-        overwriteData();
-    } else {
+    if (localStorage.getItem( "projects" )) {  // what is this part for?
         projects = JSON.parse(localStorage.getItem( 'projects' ));
+    } else {
+        overwriteData();
     }
 
     var checkObjectOfTask = function (object) {
@@ -23,6 +24,7 @@ var dataBase = (function () {
     };
 
     var addProject = function(project) {
+        debugger;
         if (typeof projects[project] === 'undefined') {
             projects[project] = [];
             overwriteData();
@@ -110,18 +112,19 @@ var dataBase = (function () {
         }
 
         projects[project][id- 1] = object;
+        overwriteData();
     };
 
     return {
         addTask: addTask,
-        clearAll: clearAll,
-        deleteTask: deleteTask,
-        getAllProjects: getAllProjects,
-        getTasksByProject: getTasksByProject,
-        getTaskById: getTaskById,
-        setTaskStatement: setTaskStatement,
         editTask: editTask,
+        deleteTask: deleteTask,
+        getTaskById: getTaskById,
+        getTasksByProject: getTasksByProject,
+        setTaskStatement: setTaskStatement,
         addProject: addProject,
+        getAllProjects: getAllProjects,
+        clearAll: clearAll,
         removeProject: removeProject,
     }
 })();

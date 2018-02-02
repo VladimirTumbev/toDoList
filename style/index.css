@@ -44,6 +44,14 @@ div.index-page {
     }
 }
 
+/* Left-side bar
+-----------------------------*/
+
+.tab-content label.check-box-container {
+    margin-left: 20px;
+}
+
+
 /* Tasks content
 -----------------------------*/
 .tasks-content {

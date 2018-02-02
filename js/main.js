@@ -1,4 +1,26 @@
-(function () {
+//  List all projects in the 1st tab panel
+$(function() {
+    var generateProjectsList = (function() {
+
+        var projectsList = dataBase.getAllProjects();
+
+        var generate = function() {
+            var $projectPanel = $('#panel1');
+            $(projectsList).each(function(_, project) {
+
+                var $myTab = $('<div>').addClass('tab-item')
+                $('<span>').appendTo($myTab).html(project);
+                var $myLabel = $('<label>').addClass("check-box-container");
+                $('<input>').attr('type', 'checkbox').appendTo($myLabel)
+                $('<span>').addClass('checkmark').appendTo($myLabel)
+                $myLabel.appendTo($myTab)
+                $myTab.appendTo($projectPanel);
+            });
+        };
+
+        return generate();
+    }());
+
     var taskToAdd = {
         comments: [],
         init: function () {
@@ -71,8 +93,8 @@
         }
     };
     taskToAdd.init();
-    
-})();
+
+});
 
 /*
 function Task (title, project, priority, dueData, reminder, description, comments, statement) {

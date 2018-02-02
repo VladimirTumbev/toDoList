@@ -76,9 +76,13 @@
 
                 <div class='tab-content'>
                     <div class='tab-pane' id='panel1'>
-                        <a href="">Project 1</a>
-                        <a href="">Project 2</a>
-                        <a href="">Project 3</a>
+                        <div class="tab-item">
+                            <span>Project 1</span>
+                            <label class="check-box-container">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
                     </div>
                     <div class='tab-pane hidden' id='panel2'>
                         <a href="">Overdue</a>
@@ -94,11 +98,15 @@
                 </div>
             </div>
 
-        </div><!--
-     --><div class="content-box">
-            <h3 class="">Today</h3><span id="margin-data">22.02.2018</span>
+        </div>
+        <!--
+     -->
+        <div class="content-box">
+            <h3 class="">Today</h3>
+            <span id="margin-data">22.02.2018</span>
             <div class="tasks-content">
-                <h4 class="project-title">Project name</h4><span class="project-tasks-status">6/9</span>
+                <h4 class="project-title">Project name</h4>
+                <span class="project-tasks-status">6/9</span>
                 <div class="task-box complated">
                     <label class="check-box-container">
                         <input type="checkbox" checked="checked">
@@ -141,7 +149,7 @@
                                     <span class='value-of-select' id="priority">Select Priority</span>
                                     <span class="icon is-small">
                                         <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
-                                             role="img" viewBox="0 0 320 512">
+                                            role="img" viewBox="0 0 320 512">
                                             <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
                                         </svg>
                                     </span>
@@ -212,6 +220,7 @@
 <script src="./js/modules/tabs.js"></script>
 <script src="./js/modules/_dataBase.js"></script>
 <script src="./js/main.js"></script>
+
 </body>
 
 </html>
