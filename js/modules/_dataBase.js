@@ -1,5 +1,4 @@
 var dataBase = (function () {
-    debugger;
     var projects = {};
 
     var overwriteData = function () {
@@ -24,7 +23,6 @@ var dataBase = (function () {
     };
 
     var addProject = function(project) {
-        debugger;
         if (typeof projects[project] === 'undefined') {
             projects[project] = [];
             overwriteData();
