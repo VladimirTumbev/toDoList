@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <header>
         <div class="container header-container">
             <div class="header-left">
@@ -62,7 +61,6 @@
             </div>
         </div>
     </header>
-
     <div class="container index-page">
         <div class="left-bar">
             <div class='tab-menu'>
@@ -77,9 +75,13 @@
 
                 <div class='tab-content'>
                     <div class='tab-pane' id='panel1'>
-                        <a href="">Project 1</a>
-                        <a href="">Project 2</a>
-                        <a href="">Project 3</a>
+                        <div class="tab-item">
+                            <span>Project 1</span>
+                            <label class="check-box-container">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
                     </div>
                     <div class='tab-pane hidden' id='panel2'>
                         <a href="">Overdue</a>
@@ -95,13 +97,121 @@
                 </div>
             </div>
 
-        </div><!--
-     --><div class="content-box">
-
+        </div>
+        <!--
+     -->
+        <div class="content-box">
+            <h3 class="">Today</h3>
+            <span id="margin-data">22.02.2018</span>
+            <div class="tasks-content">
+                <h4 class="project-title">Project name</h4>
+                <span class="project-tasks-status">6/9</span>
+                <div class="task-box complated">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <p>Task title</p>
+                    <span data-task-project="" data-task-id="">more info</span>
+                </div>
+                <div class="task-box">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <p>Task title</p>
+                    <span data-task-project="" data-task-id="">more info</span>
+                </div>
+            </div>
         </div>
 
     </div>
 
+    <div class="pop-up-shadow fade" id="addTaskPopUpNav">
+        <div class="pop-up-dialog">
+            <div class="pop-up-content">
+                <div class="pop-up-header">
+                    <h2>Add a new task</h2>
+                    <button class="button pop-up-close" data-target="#addTaskPopUpNav">
+                        <span>x</span>
+                    </button>
+                </div>
+                <div class="pop-up-body">
+                    <div class="form-group">
+                        <input type="text" class="input" id="new-task-name" placeholder="Add a new task">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="input input-medium" id="add-to-project" placeholder="Add to #project">
+                        <div class='dropdown'>
+                            <div class='dropdown-triger'>
+                                <button class='button'>
+                                    <span class='value-of-select'>Select Priority</span>
+                                    <span class="icon is-small">
+                                        <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
+                                            role="img" viewBox="0 0 320 512">
+                                            <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class='dropdown-menu hidden'>
+                                <div class='dropdown-content'>
+                                    <a href="#" class='dropdown-item'>Priority 1</a>
+                                    <a href="#" class='dropdown-item'>Priority 2</a>
+                                    <a href="#" class='dropdown-item'>Priority 3</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="input input-medium" id="due-date" placeholder="Due Date">
+                        <input type="text" class="input input-medium" id="reminder" placeholder="Reminder">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="input" id="description" cols="100" rows="10">Add a description</textarea>
+                    </div>
+                    <div class="form-group comment">
+                        <div class="avatar-user">
+                            <img class="avatar-medium" src="assets/images/profile.png" alt="Profile Picture">
+                            <label id="user-name">Iron Man</label>
+                        </div>
+                        <div class="label-textarea">
+                            <label for="comment">Comment</label>
+                            <textarea class="input" id="comment" cols="80" rows="10">Add a comment</textarea>
+                        </div>
+                        <div class="save-comment">
+                            <button class="button is-info is-medium">Save</button>
+                        </div>
+
+                        <div class="pop-up-commments-section">
+                            <div class="comment">
+                                <div class="comment-desc">
+                                    <div class="comment-creator">
+                                        <span class="comment-creator-name">Iron Man</span>
+                                    </div>
+                                    <img class="avatar-small" src="assets/images/profile.png" alt="Avatar Small">
+                                    <div class="comment-container">
+                                        <div class="current-comment">
+                                            <p>Iron Man is better than Batman</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="comment-date-time">
+                                    Jan 28 at 4:46 PM
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="pop-up-footer">
+                    <button class="button pop-up-close is-small" data-target="#addTaskPopUpNav">Close</button>
+                    <button class="button pop-up-add is-success is-small">Add the task</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./js/modules/_pop-up.js"></script>
     <script src="./js/modules/_dropdown.js"></script>

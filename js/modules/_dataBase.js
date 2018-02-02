@@ -29,7 +29,17 @@ var dataBase = (function () {
         } else {
             return 'The"' + project + '" already exist';
         }
-    }
+    };
+
+    var removeProject = function (project) {
+        if (typeof projects[project] === 'undefined') {
+            return 'The project doesn\'t exist '
+        }
+
+        delete projects[project];
+        overwriteData();
+        return true;
+    };
 
     var addTask = function ( object ) {
         debugger;
@@ -43,7 +53,7 @@ var dataBase = (function () {
 
             // Check weather theProject is empty object
             if (typeof projects[theProject] === 'undefined') {
-                return "This project dosen't exist";
+                return 'This project dosen\'t exist';
                 // projects[theProject] = [];
             }
 
@@ -113,6 +123,7 @@ var dataBase = (function () {
         addProject: addProject,
         getAllProjects: getAllProjects,
         clearAll: clearAll,
+        removeProject: removeProject,
     }
 })();
 

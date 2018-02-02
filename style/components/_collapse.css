@@ -1,15 +1,15 @@
 /* Collapse Tab */
 
-.container {
+.collapse-container {
     width: 50%;
     padding: 0 1em;
 }
 
-div {
+.collapse-container div {
     display: block;
 }
 
-.tab {
+.collapse-tab {
     position: relative;
     margin-bottom: 1px;
     width: 100%;
@@ -17,13 +17,13 @@ div {
     overflow: hidden;
 }
 
-.tab input {
+.collapse-tab input {
     position: absolute;
     opacity: 0;
     z-index: -1;
 }
 
-.tab label {
+.collapse-tab label {
     position: relative;
     display: block;
     padding: 0 0 0 1em;
@@ -33,7 +33,7 @@ div {
     cursor: pointer;
 }
 
-.tab-content {
+.collapse-tab-content {
     max-height: 0;
     overflow: hidden;
     background: white;
@@ -42,11 +42,11 @@ div {
     transition: max-height .35s;
 }
 
-.tab-content p {
+.collapse-tab-content p {
     margin: 1em;
 }
 
-input:checked~.tab-content {
+input:checked~.collapse-tab-content {
     max-height: 100%;
 }
 
