@@ -17,9 +17,7 @@ $(function() {
                 $myTab.appendTo($projectPanel);
             });
         };
-
-
-        
+       
         return generate();
     }());
 
