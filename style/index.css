@@ -91,3 +91,13 @@ div.index-page {
 .tasks-content .task-box > span:hover {
     text-decoration: underline;
 }
+
+.warning-text {
+    background-color: rgb(233, 229, 229);
+    color: red;
+    font-weight: 700;
+    max-width: 30%;
+    border-radius: 3%;
+    padding-left: 15px;
+    margin: 5px 5px;
+}

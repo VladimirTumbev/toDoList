@@ -76,13 +76,6 @@
 
                 <div class='tab-content'>
                     <div class='tab-pane' id='panel1'>
-                        <div class="tab-item">
-                            <span>Project 1</span>
-                            <label class="check-box-container">
-                                <input type="checkbox" checked="checked">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
                     </div>
                     <div class='tab-pane hidden' id='panel2'>
                         <a href="">Overdue</a>
@@ -99,28 +92,12 @@
             </div>
 
         </div><!--
-             --><div class="content-box">
+     --><div class="content-box">
+
             <h3 class="">Today</h3>
             <span id="margin-data">22.02.2018</span>
             <div class="tasks-content">
-                <h4 class="project-title">Project name</h4>
-                <span class="project-tasks-status">6/9</span>
-                <div class="task-box complated">
-                    <label class="check-box-container">
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-                    <p>Task title</p>
-                    <span data-task-project="" data-task-id="">more info</span>
-                </div>
-                <div class="task-box">
-                    <label class="check-box-container">
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-                    <p>Task title</p>
-                    <span data-task-project="" data-task-id="">more info</span>
-                </div>
+
             </div>
         </div>
 
@@ -137,10 +114,10 @@
                 </div>
                 <div class="pop-up-body">
                     <div class="form-group">
-                        <input type="text" class="input" id="new-task-name" placeholder="Add a new task">
+                        <input type="text" class="input" id="new-task-name" placeholder="Add a new task" data-name="New task field">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="input input-medium" id="add-to-project" placeholder="Add to #project">
+                        <input type="text" class="input input-medium" id="add-to-project" placeholder="Add to #project" data-name="Project field">
                         <div class='dropdown'>
                             <div class='dropdown-triger'>
                                 <button class='button'>
@@ -168,7 +145,7 @@
                     </div>
                     <div class="form-group">
                         <label for="description" aria-placeholder="Descrpitoon"></label>
-                        <textarea class="input" id="description" cols="100" rows="10" placeholder="Add a comment"></textarea>
+                        <textarea class="input" id="description" cols="100" rows="10" placeholder="Add a description"  data-name="Description cannot be empty"></textarea>
                     </div>
                     <div class="form-group comment">
                         <div class="avatar-user">
@@ -177,29 +154,13 @@
                         </div>
                         <div class="label-textarea">
                             <label for="comment">Comment</label>
-                            <textarea class="input" id="comment" cols="80" rows="10">Add a comment</textarea>
+                            <textarea class="input" id="comment" cols="80" rows="10" placeholder="Add a comment"></textarea>
                         </div>
                         <div class="save-comment">
                             <button class="button is-info is-medium" id="saveComment">Save</button>
                         </div>
 
-                        <div class="pop-up-commments-section">
-                            <div class="comment">
-                                <div class="comment-desc">
-                                    <div class="comment-creator">
-                                        <span class="comment-creator-name">Iron Man</span>
-                                    </div>
-                                    <img class="avatar-small" src="assets/images/profile.png" alt="Avatar Small">
-                                    <div class="comment-container">
-                                        <div class="current-comment">
-                                            <p>Iron Man is better than Batman</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="comment-date-time">
-                                    Jan 28 at 4:46 PM
-                                </p>
-                            </div>
+                        <div class="pop-up-commments-section" id="commentsSection">
                         </div>
                     </div>
 
