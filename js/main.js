@@ -1,7 +1,6 @@
 //  List all projects in the 1st tab panel
 $(function() {
     var generateProjectsList = (function() {
-
         var getProjects = dataBase.getAllProjects();
 
         var generate = function(projects) {
@@ -72,7 +71,7 @@ $(function() {
 
             var LENGTH_CONDITION = function (value) {
                 return (value < MIN_LENGTH && value > MAX_LENGTH_OTHERS)
-            }
+            };
 
             for (const value in this.values) {
                 if (this.values === 'dueDate' || this.values === 'reminder' || this.values === 'priority') {
