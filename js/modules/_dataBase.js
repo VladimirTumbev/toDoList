@@ -5,10 +5,10 @@ var dataBase = (function () {
         localStorage.setItem("projects", JSON.stringify( projects ));
     };
 
-    if (!localStorage.getItem( "projects" )) {  // what is this part for?
-        overwriteData();
-    } else {
+    if (localStorage.getItem( "projects" )) {  // what is this part for?
         projects = JSON.parse(localStorage.getItem( 'projects' ));
+    } else {
+        overwriteData();
     }
 
     var checkObjectOfTask = function (object) {
@@ -42,7 +42,6 @@ var dataBase = (function () {
     };
 
     var addTask = function ( object ) {
-        debugger;
         if (!checkObjectOfTask(object)) {
             return 'Something went wrong!'
         }
@@ -111,6 +110,7 @@ var dataBase = (function () {
         }
 
         projects[project][id- 1] = object;
+        overwriteData();
     };
 
     return {
