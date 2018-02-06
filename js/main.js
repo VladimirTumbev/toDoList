@@ -170,7 +170,7 @@ $(function () {
                 }
             });
 
-            return `${counter}/${tasks.length}`
+            return `${counter}/${tasks.length || 0}`
         }
 
         var getTaskNames = function (project) {
