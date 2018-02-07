@@ -1,25 +1,82 @@
 //  List all projects in the 1st tab panel
-$(function () {
-    var generateProjectsList = (function () {
-
-        var projectsList = dataBase.getAllProjects();
+$(function() {
+    var generateProjectsList = (function() {
+        var getProjects = dataBase.getAllProjects();
 
         var generate = function () {
             var $projectPanel = $('#panel1');
-            $(projectsList).each(function (_, project) {
-
+            getProjects.forEach(function (project) {
                 var $myTab = $('<div>').addClass('tab-item')
-                $('<span>').appendTo($myTab).html(project);
+                var $wrappingLabel = $('<label>').addClass('projectNameLabel').attr('data-project', project);
+                $('<span>').appendTo($wrappingLabel).html(project);
                 var $myLabel = $('<label>').addClass("check-box-container");
                 $('<input>').attr('type', 'checkbox').appendTo($myLabel)
                 $('<span>').addClass('checkmark').appendTo($myLabel)
-                $myLabel.appendTo($myTab)
+                $myLabel.appendTo($wrappingLabel);
+                $wrappingLabel.appendTo($myTab);
                 $myTab.appendTo($projectPanel);
             });
         };
 
         return generate();
     }());
+
+    var displayTasks = (function () {
+        var completedVsTotalTasks = function (project) {
+            var counter = 0;
+            var tasks = dataBase.getTasksByProject(project);
+
+            tasks.forEach(function (obj) {
+                if (obj.statement) {
+                    counter++;
+                }
+            });
+
+            return `${counter}/${tasks.length || 0}`
+        };
+
+        var getTaskNames = function (project) {
+            var taskNames = {};
+            var tasks = dataBase.getTasksByProject(project);
+
+            tasks.forEach(function (obj) {
+                taskNames[obj.id] = obj.title;
+
+            });
+            return taskNames;
+        };
+
+        var render = function (project) {
+            var $divTaskContent = $('div.tasks-content');
+            var taskNames = getTaskNames(project);
+            $divTaskContent.empty();
+
+            var $projectTitle = $('<h4>').addClass('project-title').text(project);
+            $projectTitle.appendTo($divTaskContent);
+            var $spanStatus = $('<span>').addClass('project-tasks-status').html(completedVsTotalTasks(project));
+            $spanStatus.appendTo($divTaskContent);
+            for (var id in taskNames) {
+                var $taskBoxDiv = $('<div>').addClass('task-box');
+                var $checkBoxLabel = $('<label>').addClass('check-box-container');
+                $('<input>').attr('type', 'checkbox').appendTo($checkBoxLabel);
+                $('<span>').addClass('checkmark').appendTo($checkBoxLabel);
+                $checkBoxLabel.appendTo($taskBoxDiv);
+
+                $('<p>').text(taskNames[id]).appendTo($taskBoxDiv);
+                var $moreInfoSpan = $('<span>').text('more info');
+                $moreInfoSpan.attr('data-task-project', project).attr('data-task-id', id).appendTo($taskBoxDiv);
+                $taskBoxDiv.appendTo($divTaskContent);
+            }
+
+
+        };
+
+        return {
+            render: render,
+            completedVsTotalTasks: completedVsTotalTasks,
+            getTaskNames: getTaskNames
+        };
+    })();
 
     var taskToAdd = {
         comments: [],
@@ -49,7 +106,7 @@ $(function () {
         },
 
         validatorFunction: function () {
-            var value = $(this).val()
+            var value = $(this).val();
             var alreadyWarned = !($($(this).parent()).find('p').length);
             if (!(value)) {
                 if (alreadyWarned) {
@@ -122,22 +179,21 @@ $(function () {
 
         validateData: function () {
             var MIN_LENGTH = 1;
-            var MAX_LENGTH_COMMENTS = 150;
             var MAX_LENGTH_OTHERS = 100;
             var values = this.getValues();
 
             var LENGTH_CONDITION = function (value) {
                 return (value.length > MIN_LENGTH && value.length < MAX_LENGTH_OTHERS)
-            }
+            };
 
-            for (const value in values) {
+            for (var value in values) {
                 if (value === 'taskName' || value === 'description') {
                     var isValid = LENGTH_CONDITION(values[value]);
+                    
                     if (isValid === false) {
-                        console.log(value);
-                        console.log(values[value]);
                         return false;
                     }
+                    
                 }
             }
             return true;
@@ -156,66 +212,31 @@ $(function () {
     };
     taskToAdd.init();
 
-});
+    var displayByProject = {
 
-$(function () {
-    var displayTasks = (function () {
-        var completedVsTotalTasks = function (project) {
-            var counter = 0;
-            var tasks = dataBase.getTasksByProject(project);
+        init: function(){
+            this.elementSelector();
+            this.eventBinding();
+        },
+        elementSelector: function() {
+            this.$currentProjects = $('#panel1').find(".projectNameLabel");
+            
+        },
 
-            tasks.forEach(function (obj) {
-                if (obj.statement) {
-                    counter++;
-                }
+        eventBinding: function() {
+
+            $(this.$currentProjects).on('click', function(){
+                var projectName = $(this).data('project');
+                
+                displayTasks.completedVsTotalTasks(projectName);
+                displayTasks.getTaskNames(projectName);
+                displayTasks.render(projectName);
             });
-
-            return `${counter}/${tasks.length || 0}`
         }
 
-        var getTaskNames = function (project) {
-            var taskNames = {};
-            var tasks = dataBase.getTasksByProject(project);
+ }
+    displayByProject.init();
 
-            tasks.forEach(function (obj) {
-                taskNames[obj.id] = obj.title;
-
-            });
-            return taskNames;
-        }
-
-        var render = function (project) {
-            var $divTaskContent = $('div.tasks-content');
-            var taskNames = getTaskNames(project);
-            $('.tasks-content').empty();
-            var $projectTitle = $('<h4>').addClass('project-title').text(project);
-            $projectTitle.appendTo($divTaskContent);
-            var $spanStatus = $('<span>').addClass('project-tasks-status').html(completedVsTotalTasks(project));
-            $spanStatus.appendTo($divTaskContent);
-            for (const id in taskNames) {
-                var $taskBoxDiv = $('<div>').addClass('task-box');
-                var $checkBoxLabel = $('<label>').addClass('check-box-container');
-                $('<input>').attr('type', 'checkbox').appendTo($checkBoxLabel);
-                $('<span>').addClass('checkmark').appendTo($checkBoxLabel);
-                $checkBoxLabel.appendTo($taskBoxDiv);
-                $('<p>').text(taskNames[id]).appendTo($taskBoxDiv);
-                var $moreInfoSpan = $('<span>').text('more info');
-                $moreInfoSpan.attr('data-task-project', project);
-                $moreInfoSpan.attr('data-task-id', id);
-                $moreInfoSpan.appendTo($taskBoxDiv);
-                $taskBoxDiv.appendTo($divTaskContent);
-            }
-
-
-        };
-
-        return {
-            render,
-            completedVsTotalTasks,
-            getTaskNames
-        };
-    })();
-    displayTasks.render('shopping');
 });
 
 
