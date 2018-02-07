@@ -1,0 +1,61 @@
+/* CSS custom radio button
+----------------------------------- */
+
+.radio-button-container {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-button-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    margin: 0px;
+}
+
+span.radiobutton {
+    display: inline-block;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    border-radius: 16px;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+}
+
+.radiobutton:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 5px;
+	left: 4px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+    background-color: rgb(80, 79, 79);
+}
+
+.radio-button-container input:checked+.radiobutton {
+    background-color: #f1f1f1;
+}
+
+.radio-button-container input:hover+.radiobutton:after {
+    display: block;
+    opacity: 0.6;
+}
+
+.radio-button-container input:checked+.radiobutton:after {
+    display: block;
+    opacity: 1;
+}
+
+.radio-button-container:hover .radiobutton {
+    background-color: rgb(238, 240, 240);
+    opacity: 0.6;
+}
+
+.radio-button-container:hover input:checked+.radiobutton {
+    background-color: rgb(238, 240, 240);
+    opacity: 1;
+}

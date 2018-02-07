@@ -7,11 +7,13 @@ $(function() {
             var $projectPanel = $('#panel1');
             getProjects.forEach(function (project) {
                 var $myTab = $('<div>').addClass('tab-item')
-                $('<span>').appendTo($myTab).html(project);
+                var $wrappingLabel = $('<label>').addClass('projectNameLabel').attr('data-project', project);
+                $('<span>').appendTo($wrappingLabel).html(project);
                 var $myLabel = $('<label>').addClass("check-box-container");
                 $('<input>').attr('type', 'checkbox').appendTo($myLabel)
                 $('<span>').addClass('checkmark').appendTo($myLabel)
-                $myLabel.appendTo($myTab)
+                $myLabel.appendTo($wrappingLabel);
+                $wrappingLabel.appendTo($myTab);
                 $myTab.appendTo($projectPanel);
             });
         };
@@ -177,22 +179,21 @@ $(function() {
 
         validateData: function () {
             var MIN_LENGTH = 1;
-            var MAX_LENGTH_COMMENTS = 150;
             var MAX_LENGTH_OTHERS = 100;
             var values = this.getValues();
 
             var LENGTH_CONDITION = function (value) {
-                return (value < MIN_LENGTH && value > MAX_LENGTH_OTHERS)
+                return (value.length > MIN_LENGTH && value.length < MAX_LENGTH_OTHERS)
             };
 
-            for (const value in values) {
+            for (var value in values) {
                 if (value === 'taskName' || value === 'description') {
                     var isValid = LENGTH_CONDITION(values[value]);
+                    
                     if (isValid === false) {
-                        console.log(value);
-                        console.log(values[value]);
                         return false;
                     }
+                    
                 }
             }
             return true;
@@ -211,7 +212,34 @@ $(function() {
     };
     taskToAdd.init();
 
+    var displayByProject = {
+
+        init: function(){
+            this.elementSelector();
+            this.eventBinding();
+        },
+        elementSelector: function() {
+            this.$currentProjects = $('#panel1').find(".projectNameLabel");
+            
+        },
+
+        eventBinding: function() {
+
+            $(this.$currentProjects).on('click', function(){
+                var projectName = $(this).data('project');
+                
+                displayTasks.completedVsTotalTasks(projectName);
+                displayTasks.getTaskNames(projectName);
+                displayTasks.render(projectName);
+            });
+        }
+
+ }
+    displayByProject.init();
+
 });
+
+
 /*
 function Task (title, project, priority, dueData, reminder, description, comments, statement) {
     this.id = null;
