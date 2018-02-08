@@ -50,7 +50,7 @@
 
 .tab-item {
     display: block;
-    position: relative;
+    /* position: relative; */
     top: 100%;
     left: 0px;
     padding-left: 5px;

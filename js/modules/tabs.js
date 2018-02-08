@@ -2,7 +2,7 @@
 $(function() {
     $('.tabs.is-boxed li').on('click', function() {
         $(this).closest('.tabs.is-boxed').find('li').removeClass('is-active');
-        $(this).addClass ('is-active');
+        $(this).addClass('is-active');
     });
 });
 

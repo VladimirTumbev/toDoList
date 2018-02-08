@@ -51,6 +51,20 @@ div.index-page {
     margin-left: 20px;
 }
 
+.labelAddNewProject {
+    color: #3273dc;
+    background-color:transparent;
+    text-decoration-color: initial;
+    padding-left: 30px;
+    padding-right: 10px;
+}
+
+.addNewProject input {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+
 
 /* Tasks content
 -----------------------------*/
