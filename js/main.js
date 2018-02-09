@@ -1,16 +1,17 @@
 //  List all projects in the 1st tab panel
-$(function() {
-    var generateProjectsList = (function() {
+$(function () {
+    var generateProjectsList = (function () {
         var getProjects = dataBase.getAllProjects();
 
         var generate = function () {
             var $projectPanel = $('#panel1');
+            $projectPanel.empty();
             getProjects.forEach(function (project) {
                 var $myTab = $('<div>').addClass('tab-item')
                 var $wrappingLabel = $('<label>').addClass('projectNameLabel').attr('data-project', project);
                 $('<span>').appendTo($wrappingLabel).html(project);
                 var $myLabel = $('<label>').addClass("check-box-container");
-                $('<input>').attr('type', 'checkbox').appendTo($myLabel)
+                $('<input>').attr('type', 'radio').attr('name', 'projectButtons').appendTo($myLabel)
                 $('<span>').addClass('checkmark').appendTo($myLabel)
                 $myLabel.appendTo($wrappingLabel);
                 $wrappingLabel.appendTo($myTab);
@@ -19,7 +20,35 @@ $(function() {
         };
 
         return generate();
+
+    });
+    generateProjectsList();
+
+    var addProjectfunc = (function () {
+        // Show / hide field to add new Project 
+        $('.createNewProject>*').on('click', function () {
+            $(this).closest('div.newProjectContainer').find('div.addNewProject').toggleClass('hidden');
+        });
+
+        //  Send added projects to local storage
+        $('#AddProjectBtn').on('click', function () {
+            var inputText = $('#txtName').val() || 'No Project Name';
+            dataBase.addProject(inputText);
+            var inputText = $('#txtName').val('');
+            generateProjectsList();
+            displayByProject.init();
+        });
     }());
+
+    var setCompletedTask = (function () {
+        $('.tasks-content .task-box').on('click', function () {
+            $(this).addClass('complated');
+
+        });
+
+
+    }());
+
 
     var displayTasks = (function () {
         var completedVsTotalTasks = function (project) {
@@ -120,7 +149,7 @@ $(function() {
 
         getValues: function () {
             return {
-                taskName: this.$name.val() || 'Test Project',
+                taskName: this.$name.val() || 'N/A',
                 projects: this.$projects.val().split(', ') || 'N/A',
                 priority: this.$priority.val() || 1,
                 dueDate: this.$dueDate.val(),
@@ -189,11 +218,11 @@ $(function() {
             for (var value in values) {
                 if (value === 'taskName' || value === 'description') {
                     var isValid = LENGTH_CONDITION(values[value]);
-                    
+
                     if (isValid === false) {
                         return false;
                     }
-                    
+
                 }
             }
             return true;
@@ -210,33 +239,33 @@ $(function() {
             }
         }
     };
-    
+    taskToAdd.init();
+
     var displayByProject = {
-        
-        init: function(){
+
+        init: function () {
             this.elementSelector();
             this.eventBinding();
         },
-        elementSelector: function() {
+        elementSelector: function () {
             this.$currentProjects = $('#panel1').find(".projectNameLabel");
-            
+
         },
-        
-        eventBinding: function() {
-            
-            $(this.$currentProjects).on('click', function(){
-                var projectName = $(this).data('project');                
-                
+
+        eventBinding: function () {
+
+            $(this.$currentProjects).on('click', function () {
+                var projectName = $(this).data('project');
+
                 displayTasks.completedVsTotalTasks(projectName);
                 displayTasks.getTaskNames(projectName);
                 displayTasks.render(projectName);
             });
         }
-        
+
     }
     displayByProject.init();
-    taskToAdd.init();
-    
+
 });
 
 

@@ -5,7 +5,7 @@ var dataBase = (function () {
         localStorage.setItem("projects", JSON.stringify( projects ));
     };
 
-    if (localStorage.getItem( "projects" )) {  // what is this part for?
+    if (localStorage.getItem( "projects" )) { 
         projects = JSON.parse(localStorage.getItem( 'projects' ));
     } else {
         overwriteData();
