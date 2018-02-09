@@ -13,3 +13,12 @@ $(function() {
         $(panelId).removeClass('hidden');
     });
 });
+
+
+$(function() {
+    $('#txtName').on('keyup', function(e) {
+        if (e.keyCode === 13) {
+            
+        }
+    });
+});

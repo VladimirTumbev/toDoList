@@ -1,12 +1,12 @@
 //  List all projects in the 1st tab panel
-$(function () {
-    var generateProjectsList = (function () {
+$(function() {
+    var generateProjectsList = (function() {
         var getProjects = dataBase.getAllProjects();
 
-        var generate = function () {
+        var generate = function() {
             var $projectPanel = $('#panel1');
             $projectPanel.empty();
-            getProjects.forEach(function (project) {
+            getProjects.forEach(function(project) {
                 var $myTab = $('<div>').addClass('tab-item')
                 var $wrappingLabel = $('<label>').addClass('projectNameLabel').attr('data-project', project);
                 $('<span>').appendTo($wrappingLabel).html(project);
@@ -24,38 +24,51 @@ $(function () {
     });
     generateProjectsList();
 
-    var addProjectfunc = (function () {
+    var addProjectfunc = (function() {
         // Show / hide field to add new Project 
-        $('.createNewProject>*').on('click', function () {
+        $('.createNewProject>*').on('click', function() {
             $(this).closest('div.newProjectContainer').find('div.addNewProject').toggleClass('hidden');
         });
 
         //  Send added projects to local storage
-        $('#AddProjectBtn').on('click', function () {
+        $('#AddProjectBtn').on('click', function() {
             var inputText = $('#txtName').val() || 'No Project Name';
             dataBase.addProject(inputText);
             var inputText = $('#txtName').val('');
             generateProjectsList();
             displayByProject.init();
         });
-    }());
-
-    var setCompletedTask = (function () {
-        $('.tasks-content .task-box').on('click', function () {
-            $(this).addClass('complated');
-
+        
+        $('#txtName').on('keyup', function(e) {
+            if (e.keyCode === 13) {
+                var inputText = $('#txtName').val() || 'No Project Name';
+                dataBase.addProject(inputText);
+                var inputText = $('#txtName').val('');
+                generateProjectsList();
+                displayByProject.init();
+            }
         });
+    }());
 
-
+    var setCompletedTask = (function() {
+        $('.tasks-content').on('click', '.task-box', function() {
+            $(this).addClass('complated');
+            var currentProject = $('div.tasks-content').find('h4').text();
+            var currentTaskId = $(this).find('span[data-task-id]').attr('data-task-id');
+            dataBase.setTaskStatement(currentProject, currentTaskId, true);
+            // console.log (currentTaskId);
+            displayByProject.init();
+            // displayTasks.completedVsTotalTasks(currentProject);
+        });
     }());
 
 
-    var displayTasks = (function () {
-        var completedVsTotalTasks = function (project) {
+    var displayTasks = (function() {
+        var completedVsTotalTasks = function(project) {
             var counter = 0;
             var tasks = dataBase.getTasksByProject(project);
 
-            tasks.forEach(function (obj) {
+            tasks.forEach(function(obj) {
                 if (obj.statement) {
                     counter++;
                 }
@@ -64,18 +77,18 @@ $(function () {
             return `${counter}/${tasks.length || 0}`
         };
 
-        var getTaskNames = function (project) {
+        var getTaskNames = function(project) {
             var taskNames = {};
             var tasks = dataBase.getTasksByProject(project);
 
-            tasks.forEach(function (obj) {
+            tasks.forEach(function(obj) {
                 taskNames[obj.id] = obj.title;
 
             });
             return taskNames;
         };
 
-        var render = function (project) {
+        var render = function(project) {
             var $divTaskContent = $('div.tasks-content');
             var taskNames = getTaskNames(project);
             $divTaskContent.empty();
@@ -109,11 +122,11 @@ $(function () {
 
     var taskToAdd = {
         comments: [],
-        init: function () {
+        init: function() {
             this.cacheDom();
             this.bindEvents();
         },
-        cacheDom: function () {
+        cacheDom: function() {
             this.$name = $('#new-task-name');
             this.$projects = $('#add-to-project');
             this.$priority = $('#priority');
@@ -126,7 +139,7 @@ $(function () {
             this.$commentsSection = $('#commentsSection')
         },
 
-        bindEvents: function () {
+        bindEvents: function() {
             this.$createButton.on('click', this.validateAndCreate.bind(this));
             this.$saveCommentBtn.on('click', this.addCommentAndRender.bind(this));
             this.$name.on('blur', this.validatorFunction);
@@ -134,7 +147,7 @@ $(function () {
             this.$projects.on('blur', this.validatorFunction);
         },
 
-        validatorFunction: function () {
+        validatorFunction: function() {
             var value = $(this).val();
             var alreadyWarned = !($($(this).parent()).find('p').length);
             if (!(value)) {
@@ -147,7 +160,7 @@ $(function () {
             }
         },
 
-        getValues: function () {
+        getValues: function() {
             return {
                 taskName: this.$name.val() || 'N/A',
                 projects: this.$projects.val().split(', ') || 'N/A',
@@ -159,12 +172,12 @@ $(function () {
             }
         },
 
-        addCommentAndRender: function () {
+        addCommentAndRender: function() {
             this.addComment();
             this.renderCommens();
         },
 
-        addComment: function () {
+        addComment: function() {
             var values = this.getValues();
             var now = new Date();
             now = now.toUTCString();
@@ -174,10 +187,10 @@ $(function () {
             this.$newComment.val('');
         },
 
-        renderCommens: function () {
+        renderCommens: function() {
             $commentsSection = this.$commentsSection;
             $commentsSection.empty();
-            this.comments.forEach(function (e) {
+            this.comments.forEach(function(e) {
                 var $comment = $('<div>').addClass('comment');
                 var $commentDesc = $('<div>').addClass('comment-desc');
                 var $commentCreator = $('<div>').addClass('comment-creator');
@@ -206,12 +219,12 @@ $(function () {
 
         },
 
-        validateData: function () {
+        validateData: function() {
             var MIN_LENGTH = 1;
             var MAX_LENGTH_OTHERS = 100;
             var values = this.getValues();
 
-            var LENGTH_CONDITION = function (value) {
+            var LENGTH_CONDITION = function(value) {
                 return (value.length > MIN_LENGTH && value.length < MAX_LENGTH_OTHERS)
             };
 
@@ -228,7 +241,7 @@ $(function () {
             return true;
         },
 
-        validateAndCreate: function () {
+        validateAndCreate: function() {
             var values = this.getValues();
             if (this.validateData()) {
                 var newTask = new Task(values.taskName, values.projects, values.priority, values.dueDate, values.reminder, values.description, this.comments, false);
@@ -243,18 +256,18 @@ $(function () {
 
     var displayByProject = {
 
-        init: function () {
+        init: function() {
             this.elementSelector();
             this.eventBinding();
         },
-        elementSelector: function () {
+        elementSelector: function() {
             this.$currentProjects = $('#panel1').find(".projectNameLabel");
 
         },
 
-        eventBinding: function () {
+        eventBinding: function() {
 
-            $(this.$currentProjects).on('click', function () {
+            $(this.$currentProjects).on('click', function() {
                 var projectName = $(this).data('project');
 
                 displayTasks.completedVsTotalTasks(projectName);
