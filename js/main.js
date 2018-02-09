@@ -10,9 +10,9 @@ $(function() {
                 var $myTab = $('<div>').addClass('tab-item')
                 var $wrappingLabel = $('<label>').addClass('projectNameLabel').attr('data-project', project);
                 $('<span>').appendTo($wrappingLabel).html(project);
-                var $myLabel = $('<label>').addClass("check-box-container");
+                var $myLabel = $('<label>').addClass("radio-button-container");
                 $('<input>').attr('type', 'radio').attr('name', 'projectButtons').appendTo($myLabel)
-                $('<span>').addClass('checkmark').appendTo($myLabel)
+                $('<span>').addClass('radiobutton').appendTo($myLabel)
                 $myLabel.appendTo($wrappingLabel);
                 $wrappingLabel.appendTo($myTab);
                 $myTab.appendTo($projectPanel);
@@ -56,9 +56,7 @@ $(function() {
             var currentProject = $('div.tasks-content').find('h4').text();
             var currentTaskId = $(this).find('span[data-task-id]').attr('data-task-id');
             dataBase.setTaskStatement(currentProject, currentTaskId, true);
-            // console.log (currentTaskId);
             displayByProject.init();
-            // displayTasks.completedVsTotalTasks(currentProject);
         });
     }());
 

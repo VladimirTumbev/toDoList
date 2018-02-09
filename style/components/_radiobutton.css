@@ -5,6 +5,8 @@
     display: inline-block;
     position: relative;
     cursor: pointer;
+    margin-left: 10px;
+    z-index: 0;
 }
 
 .radio-button-container input {

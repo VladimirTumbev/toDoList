@@ -52,7 +52,7 @@ var dataBase = (function () {
 
             // Check weather theProject is empty object
             if (typeof projects[theProject] === 'undefined') {
-                return 'This project dosen\'t exist';
+                return 'This project doesn\'t exist';
                 // projects[theProject] = [];
             }
 
