@@ -120,7 +120,7 @@ $(function() {
 
         getValues: function () {
             return {
-                taskName: this.$name.val() || 'N/A',
+                taskName: this.$name.val() || 'Test Project',
                 projects: this.$projects.val().split(', ') || 'N/A',
                 priority: this.$priority.val() || 1,
                 dueDate: this.$dueDate.val(),
@@ -210,10 +210,9 @@ $(function() {
             }
         }
     };
-    taskToAdd.init();
-
+    
     var displayByProject = {
-
+        
         init: function(){
             this.elementSelector();
             this.eventBinding();
@@ -222,22 +221,24 @@ $(function() {
             this.$currentProjects = $('#panel1').find(".projectNameLabel");
             
         },
-
+        
         eventBinding: function() {
-
+            
             $(this.$currentProjects).on('click', function(){
-                var projectName = $(this).data('project');
+                var projectName = $(this).data('project');                
                 
                 displayTasks.completedVsTotalTasks(projectName);
                 displayTasks.getTaskNames(projectName);
                 displayTasks.render(projectName);
             });
         }
-
- }
+        
+    }
     displayByProject.init();
-
+    taskToAdd.init();
+    
 });
+
 
 
 /*
