@@ -72,14 +72,10 @@ $(function() {
         var completedVsTotalTasks = function(project) {
             var counter = 0;
             var tasks = dataBase.getTasksByProject(project);
+            var completedTasks = dataBase.getComplatedTasksByProject(project);
+            var totalTasks = (tasks.length || 0) + (completedTasks.length || 0 )
 
-            tasks.forEach(function(obj) {
-                if (obj.statement) {
-                    counter++;
-                }
-            });
-
-            return `${counter}/${tasks.length || 0}`
+            return `${completedTasks.length || 0}/${totalTasks}`
         };
 
         var getTaskNames = function(project) {
