@@ -127,6 +127,35 @@ var dataBase = (function () {
     }
 })();
 
+var currentProject = (function () {
+    var currentProject = '';
+
+    var overwriteData = function () {
+        localStorage.setItem("currentProject", JSON.stringify( currentProject ));
+    };
+
+    if (localStorage.getItem( "currentProject" )) {
+        currentProject = JSON.parse(localStorage.getItem( 'projects' ));
+    } else {
+        overwriteData();
+    }
+
+    var setProject = function (project) {
+        currentProject = project;
+        overwriteData();
+    };
+
+    var getProject = function () {
+        return currentProject;
+    };
+
+    return {
+        setProject: setProject,
+        getProject: getProject
+    }
+
+})();
+
 function Task (title, project, priority, dueData, reminder, description, comments, statement) {
     this.id = null;
     this.title = title;
@@ -139,4 +168,3 @@ function Task (title, project, priority, dueData, reminder, description, comment
     this.statement = statement;
     this.deleted = false;
 }
-// let newTask = new Task('Otidi do magazina', ['Shopping'], 'P2', 'dasda', 'dasdsa', 'Otidi do magazina', [], false);
