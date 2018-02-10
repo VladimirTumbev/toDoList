@@ -14,34 +14,9 @@
         <div class="container header-container">
             <div class="header-left">
                 <img class="logo" src="assets/images/logoV3.png" alt="Booking.js Logo">
-                <div class='dropdown is-active'>
-                    <div class='dropdown-triger'>
-                        <button class='button'>
-                            <span class='value-of-select'>Select task</span>
-                            <span class="icon is-small">
-                                <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
-                                    role="img" viewBox="0 0 320 512">
-                                    <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
-                                </svg>
-                                <!-- <i class="fas fa-angle-down" aria-hidden="true"></i> -->
-                            </span>
-                        </button>
-                    </div>
-                    <div class='dropdown-menu hidden'>
-                        <div class='dropdown-content'>
-                            <a href="#Add task 1" class='dropdown-item'>Project 1</a>
-                            <a href="#Add task 2" class='dropdown-item is-active'>Task 2</a>
-                            <a href="#Add task 3" class='dropdown-item'>Task 3</a>
-                            <a href="#Add task 4" class='dropdown-item'>Task 4</a>
-                            <hr class="dropdown-divider">
-                            <a href="#Add task 5" class='dropdown-item'>Task 5</a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
             <div class="header-right">
-                <button class="button is-info is-rounded pop-up-open" data-target="#addTaskPopUpNav">
+                <button class="button is-info is-rounded pop-up-open add-task" data-target="#addTaskPopUpNav">
                     +
                 </button>
                 <div class='dropdown'>
@@ -127,7 +102,30 @@
                         <input type="text" class="input" id="new-task-name" placeholder="Add a new task" data-name="New task field">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="input input-medium" id="add-to-project" placeholder="Add to #project" data-name="Project field">
+                        <!--<input type="text" class="input input-medium" id="add-to-project" placeholder="Add to #project" data-name="Project field">-->
+                        <div class='dropdown add-task-projects-list'>
+                            <div class='dropdown-triger'>
+                                <button class='button'>
+                                    <span class='value-of-select'>Select Project</span>
+                                    <span class="icon is-small">
+                                        <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
+                                             role="img" viewBox="0 0 320 512">
+                                            <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class='dropdown-menu hidden'>
+                                <div class='dropdown-content'>
+                                    <a href="#Add task 1" class='dropdown-item'>Task 1</a>
+                                    <a href="#Add task 2" class='dropdown-item is-active'>Task 2</a>
+                                    <a href="#Add task 3" class='dropdown-item'>Task 3</a>
+                                    <a href="#Add task 4" class='dropdown-item'>Task 4</a>
+                                    <hr class="dropdown-divider">
+                                    <a href="#Add task 5" class='dropdown-item'>Task 5</a>
+                                </div>
+                            </div>
+                        </div>
                         <div class='dropdown'>
                             <div class='dropdown-triger'>
                                 <button class='button'>
@@ -178,6 +176,57 @@
                 <div class="pop-up-footer">
                     <button class="button pop-up-close is-small" data-target="#addTaskPopUpNav">Close</button>
                     <button class="button pop-up-add is-success is-small" id="createTask">Add the task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pop-up-shadow fade" id="taskInformationPopUp">
+        <div class="pop-up-dialog">
+            <div class="pop-up-content">
+                <div class="pop-up-header">
+                    <h2>Task</h2>
+                    <button class="button pop-up-close" data-target="#taskInformationPopUp">
+                        <span>x</span>
+                    </button>
+                </div>
+                <div class="pop-up-body">
+                    <div class="form-group">
+                        <input type="text" class="new-task-name input" placeholder="Add a new task" data-name="New task field">
+                    </div>
+                    <div class="form-group">
+                        <div class='dropdown'>
+                            <div class='dropdown-triger'>
+                                <button class='button'>
+                                    <span class='priority value-of-select'>Select Priority</span>
+                                    <span class="icon is-small">
+                                        <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
+                                             role="img" viewBox="0 0 320 512">
+                                            <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class='dropdown-menu hidden'>
+                                <div class='dropdown-content'>
+                                    <a href="#" class='dropdown-item'>Priority 1</a>
+                                    <a href="#" class='dropdown-item'>Priority 2</a>
+                                    <a href="#" class='dropdown-item'>Priority 3</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="due-date input input-medium" placeholder="Due Date">
+                        <input type="text" class="reminder input input-medium" placeholder="Reminder">
+                    </div>
+                    <div class="form-group">
+                        <label for="description" aria-placeholder="Descrpitoon"></label>
+                        <textarea class="description input" cols="100" rows="10" placeholder="Add a description" data-name="Description cannot be empty"></textarea>
+                    </div>
+
+                </div>
+                <div class="pop-up-footer">
+                    <button class="button pop-up-close is-small" data-target="#taskInformationPopUp">Close</button>
                 </div>
             </div>
         </div>

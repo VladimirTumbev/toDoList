@@ -7,7 +7,7 @@ $(function() {
             var $projectPanel = $('#panel1');
             $projectPanel.empty();
             getProjects.forEach(function(project) {
-                var $myTab = $('<div>').addClass('tab-item')
+                var $myTab = $('<div>').addClass('tab-item');
                 var $wrappingLabel = $('<label>').addClass('projectNameLabel').attr('data-project', project);
                 $('<span>').appendTo($wrappingLabel).html(project);
                 var $myLabel = $('<label>').addClass("radio-button-container");
@@ -38,7 +38,7 @@ $(function() {
             generateProjectsList();
             displayByProject.init();
         });
-        
+
         $('#txtName').on('keyup', function(e) {
             if (e.keyCode === 13) {
                 var inputText = $('#txtName').val() || 'No Project Name';
@@ -51,15 +51,22 @@ $(function() {
     }());
 
     var setCompletedTask = (function() {
-        $('.tasks-content').on('click', '.task-box', function() {
-            $(this).addClass('complated');
+        $(document).on('click', '.check-box-container', function() {
             var currentProject = $('div.tasks-content').find('h4').text();
-            var currentTaskId = $(this).find('span[data-task-id]').attr('data-task-id');
-            dataBase.setTaskStatement(currentProject, currentTaskId, true);
+            var currentTaskId = $(this).parent().find('span[data-task-id]').attr('data-task-id');
+            var theCheckBox = $(this).find('input[type="checkbox"]');
+
+            if (theCheckBox.is(':checked')) {
+                dataBase.setTaskStatement(currentProject, currentTaskId, true);
+                $(this).parent().addClass('complated');
+            } else {
+                dataBase.setTaskStatement(currentProject, currentTaskId, false);
+                $(this).parent().removeClass('complated');
+            }
+
             displayByProject.init();
         });
     }());
-
 
     var displayTasks = (function() {
         var completedVsTotalTasks = function(project) {
@@ -104,10 +111,9 @@ $(function() {
 
                 $('<p>').text(taskNames[id]).appendTo($taskBoxDiv);
                 var $moreInfoSpan = $('<span>').text('more info');
-                $moreInfoSpan.attr('data-task-project', project).attr('data-task-id', id).appendTo($taskBoxDiv);
+                $moreInfoSpan.attr('data-task-project', project).attr('data-task-id', id).addClass('pop-up-open').attr('data-target', '#taskInformationPopUp').appendTo($taskBoxDiv);
                 $taskBoxDiv.appendTo($divTaskContent);
             }
-
 
         };
 
@@ -118,6 +124,18 @@ $(function() {
         };
     })();
 
+    var clearAddTaskPopUp = (function () {
+        var thePopUp = $('#addTaskPopUpNav');
+
+        var clearAll = function () {
+            thePopUp.find('input[type="text"]').val('');
+            thePopUp.find('textarea').val('');
+            thePopUp.find('.warning-text').addClass('hidden');
+        };
+
+        return clearAll;
+    })();
+
     var taskToAdd = {
         comments: [],
         init: function() {
@@ -126,7 +144,7 @@ $(function() {
         },
         cacheDom: function() {
             this.$name = $('#new-task-name');
-            this.$projects = $('#add-to-project');
+            this.$projects = $('.add-task-projects-list .value-of-select');
             this.$priority = $('#priority');
             this.$dueDate = $('#due-date');
             this.$reminder = $('#reminder');
@@ -136,7 +154,6 @@ $(function() {
             this.$saveCommentBtn = $('#saveComment');
             this.$commentsSection = $('#commentsSection')
         },
-
         bindEvents: function() {
             this.$createButton.on('click', this.validateAndCreate.bind(this));
             this.$saveCommentBtn.on('click', this.addCommentAndRender.bind(this));
@@ -144,7 +161,6 @@ $(function() {
             this.$description.on('blur', this.validatorFunction);
             this.$projects.on('blur', this.validatorFunction);
         },
-
         validatorFunction: function() {
             var value = $(this).val();
             var alreadyWarned = !($($(this).parent()).find('p').length);
@@ -157,24 +173,21 @@ $(function() {
                 $($(this).parent()).find('p').remove();
             }
         },
-
         getValues: function() {
             return {
                 taskName: this.$name.val() || 'N/A',
-                projects: this.$projects.val().split(', ') || 'N/A',
-                priority: this.$priority.val() || 1,
+                projects: this.$projects.text().split(', ') || 'N/A',
+                priority: this.$priority.text() || 'Priority 1',
                 dueDate: this.$dueDate.val(),
                 description: this.$description.val() || 'N/A',
                 reminder: this.$reminder.val(),
                 newComment: this.$newComment.val() || '',
             }
         },
-
         addCommentAndRender: function() {
             this.addComment();
             this.renderCommens();
         },
-
         addComment: function() {
             var values = this.getValues();
             var now = new Date();
@@ -184,7 +197,6 @@ $(function() {
             this.comments.push(currentComment);
             this.$newComment.val('');
         },
-
         renderCommens: function() {
             $commentsSection = this.$commentsSection;
             $commentsSection.empty();
@@ -216,7 +228,6 @@ $(function() {
             });
 
         },
-
         validateData: function() {
             var MIN_LENGTH = 1;
             var MAX_LENGTH_OTHERS = 100;
@@ -238,19 +249,45 @@ $(function() {
             }
             return true;
         },
-
         validateAndCreate: function() {
             var values = this.getValues();
             if (this.validateData()) {
+                // Build task object and add it to databse
                 var newTask = new Task(values.taskName, values.projects, values.priority, values.dueDate, values.reminder, values.description, this.comments, false);
+                debugger;
                 dataBase.addTask(newTask);
+
+                // Close the PopUp
                 $('#addTaskPopUpNav').removeClass('show');
+                clearAddTaskPopUp();
+
+                // Render the tasks
+                displayTasks.render(currentProject.getProject());
             } else {
                 alert('Invalid new todo');
             }
         }
     };
     taskToAdd.init();
+
+    var popUpInformation = (function () {
+
+        var renderTask = function (project, id) {
+            var $thePopUpBox = $('#taskInformationPopUp');
+            var dataOfTask = dataBase.getTaskById(project, id);
+
+            // Fill the input
+            $thePopUpBox.find('.new-task-name').val(dataOfTask['title']);
+            $thePopUpBox.find('.value-of-select').text(dataOfTask['priority']);
+            $thePopUpBox.find('.due-date').val(dataOfTask['dueData']);
+            $thePopUpBox.find('.reminder').val(dataOfTask['reminder']);
+            $thePopUpBox.find('.description').val(dataOfTask['description']);
+        };
+
+        return {
+            renderTask: renderTask
+        }
+    })();
 
     var displayByProject = {
 
@@ -262,36 +299,36 @@ $(function() {
             this.$currentProjects = $('#panel1').find(".projectNameLabel");
 
         },
-
         eventBinding: function() {
-
             $(this.$currentProjects).on('click', function() {
                 var projectName = $(this).data('project');
 
+                currentProject.setProject(projectName);
                 displayTasks.completedVsTotalTasks(projectName);
                 displayTasks.getTaskNames(projectName);
                 displayTasks.render(projectName);
             });
         }
-
-    }
+    };
     displayByProject.init();
 
+    // Open popUp with 'more information'
+    $(document).on('click', '.task-box span.pop-up-open', function () {
+        var taskProject = $(this).data('task-project');
+        var taskid = $(this).data('task-id');
+
+        popUpInformation.renderTask(taskProject,taskid);
+    });
+
+    // Open PopUp 'addTask' and render all tasks in the dropdwon
+    $(document).on('click', '.pop-up-open.add-task', function () {
+        var allProjects = dataBase.getAllProjects();
+        var $theDropDownList = $('.add-task-projects-list .dropdown-content');
+
+        $theDropDownList.empty();
+        allProjects.forEach(function (value) {
+            var dropDownElement = $('<a>').addClass('dropdown-item').text(value);
+            dropDownElement.appendTo($theDropDownList);
+        })
+    });
 });
-
-
-
-/*
-function Task (title, project, priority, dueData, reminder, description, comments, statement) {
-    this.id = null;
-    this.title = title;
-    this.project = project;
-    this.priority = priority;
-    this.dueData = dueData;
-    this.reminder = reminder;
-    this.description = description;
-    this.comments = comments;
-    this.statement = statement;
-    this.deleted = false;
-}
-*/

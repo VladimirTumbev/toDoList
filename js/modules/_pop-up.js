@@ -1,9 +1,10 @@
 $(function () {
-    $('.pop-up-open').on('click', function () {
+    $(document).on('click', '.pop-up-open', function () {
         var popUpDiv = $(this).data('target');
         $(popUpDiv).toggleClass('show');
     });
-    $('.pop-up-close').on('click', function () {
+
+    $(document).on('click','.pop-up-close', function () {
         var popUpDiv = $(this).data('target');
         $(popUpDiv).toggleClass('show');
     });
