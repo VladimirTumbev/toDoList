@@ -93,6 +93,17 @@ var dataBase = (function () {
         return result;
     };
 
+    var getComplatedTasksByProject = function (project) {
+        var result = [];
+        for (var i = 0; i < projects[project].length; i+=1) {
+            if (projects[project][i].statement === true && projects[project][i].deleted !== true) {
+                result.push(projects[project][i]);
+            }
+        }
+
+        return result;
+    };
+
     var getTaskById = function (project, id) {
         return projects[project][id -1];
     };
@@ -124,6 +135,7 @@ var dataBase = (function () {
         getAllProjects: getAllProjects,
         clearAll: clearAll,
         removeProject: removeProject,
+        getComplatedTasksByProject: getComplatedTasksByProject
     }
 })();
 
