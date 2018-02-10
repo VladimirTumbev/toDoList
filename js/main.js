@@ -212,7 +212,6 @@ $(function() {
                 $commentDateTime.appendTo($comment);
                 //append that parent to the existing div on the page
                 $comment.appendTo($commentsSection);
-
             });
 
         },
