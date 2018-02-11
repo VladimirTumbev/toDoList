@@ -129,7 +129,7 @@ div.index-page {
 }
 .pop-up-shadow .form-group label .dropdown {
     display: block;
-    width: 50%;
+    width: auto;
 }
 
 .pop-up-shadow .form-group label textarea {
