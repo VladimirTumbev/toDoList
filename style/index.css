@@ -6,6 +6,10 @@ body {
     background-color: #fafafa;
 }
 
+h4 {
+    font-weight: 900;
+}
+
 
 /* Site architecture
 -----------------------------*/
@@ -135,4 +139,35 @@ div.index-page {
 .pop-up-shadow .form-group label textarea {
     display: block;
     width: 100%;
+}
+
+/* Welcome message div */
+
+div.welcome {
+    text-align: center;
+    font-weight: bolder;
+}
+
+div.welcome h1,h2 {
+    letter-spacing: 0.3em;
+}
+
+div.welcome h2 {
+    margin-top: 20px;
+    font-size: 1em;
+    color: rgb(111, 201, 231);
+    font-variant-caps: all-small-caps;
+    
+}
+
+div.welcome h1 {
+    font-size: 2em;
+    color: #db4c3f;
+    text-shadow: 1px 1px #0a0a0a;
+    margin-bottom: 80px;
+    font-variant-caps: all-petite-caps;
+}
+
+div.welcome img {
+    height: 80px;
 }
