@@ -53,15 +53,15 @@
     /* position: relative; */
     top: 100%;
     left: 0px;
-    padding-left: 5px;
-    padding-top: 1px;
-    padding-bottom: 1px;
     z-index: 20;
     color: #4a4a4a;
-    font-size: 1em;
+    font-size: 0.80em;
     font-weight: 400;
     line-height: 1.5;
-    background-color: grey;
+    padding: 8px 12px;
+    text-transform: uppercase;
+    background-color: lightblue;
+    border-radius: 5px;
     margin: 5px;
 }
 

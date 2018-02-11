@@ -22,11 +22,11 @@ div.index-page {
 }
 
 .index-page .left-bar {
-    width: 30%;
+    width: 35%;
     border-right: 1px solid #f1f1f1;
 }
 .index-page .content-box {
-    width: 70%;
+    width: 65%;
     background-color: #ffffff;
     padding: 45px 45px;
 }
@@ -50,7 +50,6 @@ div.index-page {
 .tab-content label.check-box-container {
     margin-left: 20px;
 }
-
 .labelAddNewProject {
     color: #3273dc;
     background-color:transparent;
@@ -58,12 +57,13 @@ div.index-page {
     padding-left: 30px;
     padding-right: 10px;
 }
-
 .addNewProject input {
     margin-left: 30px;
     margin-top: 10px;
 }
-
+.createNewProject {
+    padding: 10px 25px 0px;
+}
 
 
 /* Tasks content
@@ -96,6 +96,7 @@ div.index-page {
 .tasks-content .task-box > p {
     font-weight: bold;
     font-size: 0.800em;
+    margin-left: 10px;
 }
 .tasks-content .task-box > span {
     font-size: 0.700em;
@@ -114,4 +115,24 @@ div.index-page {
     border-radius: 3%;
     padding-left: 15px;
     margin: 5px 5px;
+}
+
+/* PopUps
+-----------------------------*/
+.pop-up-shadow .form-group {
+    display: block;
+    margin-top: 16px;
+}
+
+.pop-up-shadow .form-group:first-child {
+    margin-top: 0px;
+}
+.pop-up-shadow .form-group label .dropdown {
+    display: block;
+    width: 50%;
+}
+
+.pop-up-shadow .form-group label textarea {
+    display: block;
+    width: 100%;
 }
