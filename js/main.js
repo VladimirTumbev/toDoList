@@ -1,10 +1,17 @@
 //  List all projects in the 1st tab panel
 $(function() {
-    var generateProjectsList = (function() {
+    // find the panel id
+    var findCurrentPanel = function() {
+        var $currentPanel = $('div.is-boxed').find('li.is-active').data('panelid');
+        $currentPanel = $($currentPanel);
+        return $currentPanel;
+    };
+    
+    var generateProjectsList = (function(panel) {
         var getProjects = dataBase.getAllProjects();
 
-        var generate = function() {
-            var $projectPanel = $('#panel1');
+        var generate = function(panel) {
+            var $projectPanel = panel;
             $projectPanel.empty();
             getProjects.forEach(function(project) {
                 var $myTab = $('<div>').addClass('tab-item');
@@ -19,10 +26,12 @@ $(function() {
             });
         };
 
-        return generate();
+        return generate(panel);
 
     });
-    generateProjectsList();
+    generateProjectsList($('#panel1'));
+    generateProjectsList($('#panel3'));
+    
 
     var addProjectfunc = (function() {
         // Show / hide field to add new Project 
@@ -35,8 +44,10 @@ $(function() {
             var inputText = $('#txtName').val() || 'No Project Name';
             dataBase.addProject(inputText);
             var inputText = $('#txtName').val('');
-            generateProjectsList();
-            displayByProject.init();
+            var currentPan = findCurrentPanel();
+            generateProjectsList($('#panel1'));
+            generateProjectsList($('#panel3'));
+            displayByProject(currentPan);
         });
 
         $('#txtName').on('keyup', function(e) {
@@ -44,27 +55,37 @@ $(function() {
                 var inputText = $('#txtName').val() || 'No Project Name';
                 dataBase.addProject(inputText);
                 var inputText = $('#txtName').val('');
-                generateProjectsList();
-                displayByProject.init();
+                var currentPanel = findCurrentPanel();
+                generateProjectsList($('#panel1'));
+                generateProjectsList($('#panel3'));
+                displayByProject(currentPanel);
             }
         });
     }());
 
     var setCompletedTask = (function() {
         $(document).on('click', '.check-box-container', function() {
+            var $currentPanel = findCurrentPanel();
+            var currentPanelID = $currentPanel.attr('id');
+            console.log(currentPanelID);
             var currentProject = $('div.tasks-content').find('h4').text();
             var currentTaskId = $(this).parent().find('span[data-task-id]').attr('data-task-id');
             var theCheckBox = $(this).find('input[type="checkbox"]');
 
-            if (theCheckBox.is(':checked')) {
+            if (theCheckBox.is(':checked') && currentPanelID === 'panel1') {
                 dataBase.setTaskStatement(currentProject, currentTaskId, true);
                 $(this).parent().addClass('complated');
-            } else {
+            } else if (!(theCheckBox.is(':checked')) && currentPanelID === 'panel1') {
                 dataBase.setTaskStatement(currentProject, currentTaskId, false);
                 $(this).parent().removeClass('complated');
+            } else if (theCheckBox.is(':checked') && currentPanelID === 'panel3') {
+                dataBase.setTaskStatement(currentProject, currentTaskId, false);
+                $(this).parent().removeClass('complated');
+            } else if (!(theCheckBox.is(':checked')) && currentPanelID === 'panel3') {
+                dataBase.setTaskStatement(currentProject, currentTaskId, true);
+                $(this).parent().addClass('complated');
             }
-
-            displayByProject.init();
+           
         });
     }());
 
@@ -81,7 +102,6 @@ $(function() {
         var getTaskNames = function(project) {
             var taskNames = {};
             var tasks = dataBase.getTasksByProject(project);
-
             tasks.forEach(function(obj) {
                 taskNames[obj.id] = obj.title;
 
@@ -89,9 +109,20 @@ $(function() {
             return taskNames;
         };
 
-        var render = function(project) {
+        var getCompletedTaskNames = function(project) {
+            var completedTaskNames = {};
+            var allCompletedTasks = dataBase.getComplatedTasksByProject(project);
+
+            allCompletedTasks.forEach(function(obj) {
+                completedTaskNames[obj.id] = obj.title;
+
+            });
+            return completedTaskNames;
+
+        }
+
+        var render = function(project, taskNames) {
             var $divTaskContent = $('div.tasks-content');
-            var taskNames = getTaskNames(project);
             $divTaskContent.empty();
 
             var $projectTitle = $('<h4>').addClass('project-title').text(project);
@@ -104,7 +135,6 @@ $(function() {
                 $('<input>').attr('type', 'checkbox').appendTo($checkBoxLabel);
                 $('<span>').addClass('checkmark').appendTo($checkBoxLabel);
                 $checkBoxLabel.appendTo($taskBoxDiv);
-
                 $('<p>').text(taskNames[id]).appendTo($taskBoxDiv);
                 var $moreInfoSpan = $('<span>').text('more info');
                 $moreInfoSpan.attr('data-task-project', project).attr('data-task-id', id).addClass('pop-up-open').attr('data-target', '#taskInformationPopUp').appendTo($taskBoxDiv);
@@ -116,7 +146,8 @@ $(function() {
         return {
             render: render,
             completedVsTotalTasks: completedVsTotalTasks,
-            getTaskNames: getTaskNames
+            getTaskNames: getTaskNames,
+            getCompletedTaskNames: getCompletedTaskNames
         };
     })();
 
@@ -249,7 +280,6 @@ $(function() {
             if (this.validateData()) {
                 // Build task object and add it to databse
                 var newTask = new Task(values.taskName, values.projects, values.priority, values.dueDate, values.reminder, values.description, this.comments, false);
-                debugger;
                 dataBase.addTask(newTask);
 
                 // Close the PopUp
@@ -257,7 +287,9 @@ $(function() {
                 clearAddTaskPopUp();
 
                 // Render the tasks
-                displayTasks.render(currentProject.getProject());
+                var thisCurrentProject = currentProject.getProject()
+                var incompleteTasks = displayTasks.getTaskNames(thisCurrentProject);
+                displayTasks.render(thisCurrentProject, incompleteTasks);
             } else {
                 alert('Invalid new todo');
             }
@@ -283,29 +315,47 @@ $(function() {
             renderTask: renderTask
         }
     })();
+    
 
-    var displayByProject = {
+    var displayByProject = (function(panel) {
 
-        init: function() {
-            this.elementSelector();
-            this.eventBinding();
-        },
-        elementSelector: function() {
-            this.$currentProjects = $('#panel1').find(".projectNameLabel");
+        var init = function() {
+            elementSelector();
+            eventBinding();
+        };
+       var elementSelector = function() {
+            $currentProjects = $(panel).find(".projectNameLabel");
 
-        },
-        eventBinding: function() {
-            $(this.$currentProjects).on('click', function() {
+        };
+       var eventBinding = function() {
+           if (panel === '#panel1') {
+               $($currentProjects).on('click', function() {
+                   var projectName = $(this).data('project');
+                   currentProject.setProject(projectName);
+                   displayTasks.completedVsTotalTasks(projectName);
+                   var incompleteTasksToRender = displayTasks.getTaskNames(projectName);
+                   displayTasks.render(projectName, incompleteTasksToRender);
+               });
+           } else {
+            $($currentProjects).on('click', function() {
                 var projectName = $(this).data('project');
 
                 currentProject.setProject(projectName);
                 displayTasks.completedVsTotalTasks(projectName);
-                displayTasks.getTaskNames(projectName);
-                displayTasks.render(projectName);
+                var completedTasksToRender = displayTasks.getCompletedTaskNames(projectName);
+                displayTasks.render(projectName, completedTasksToRender);
             });
+           }
         }
-    };
-    displayByProject.init();
+        init();
+        return {
+            init: init,
+            elementSelector: elementSelector,
+            eventBinding: eventBinding
+        }
+    });
+    displayByProject('#panel1');
+    displayByProject('#panel3');
 
     // Open popUp with 'more information'
     $(document).on('click', '.task-box span.pop-up-open', function () {

@@ -11,14 +11,10 @@ $(function() {
         var panelId = $(this).attr('data-panelid');
         $(this).closest('.tab-menu').find('div.tab-pane').addClass('hidden');
         $(panelId).removeClass('hidden');
-    });
-});
-
-
-$(function() {
-    $('#txtName').on('keyup', function(e) {
-        if (e.keyCode === 13) {
-            
+        if (panelId === '#panel3') {
+            $('.newProjectContainer').addClass('hidden');
+        } else if (panelId === '#panel1') {
+            $('.newProjectContainer').removeClass('hidden');
         }
     });
 });

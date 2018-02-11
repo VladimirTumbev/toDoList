@@ -143,11 +143,11 @@ var currentProject = (function () {
     var currentProject = '';
 
     var overwriteData = function () {
-        localStorage.setItem("currentProject", JSON.stringify( currentProject ));
+        localStorage.setItem('currentProject', JSON.stringify( currentProject ));
     };
 
-    if (localStorage.getItem( "currentProject" )) {
-        currentProject = JSON.parse(localStorage.getItem( 'projects' ));
+    if (localStorage.getItem( 'currentProject' )) {
+        currentProject = JSON.parse(localStorage.getItem( 'currentProject' ));
     } else {
         overwriteData();
     }
