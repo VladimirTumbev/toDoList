@@ -30,7 +30,7 @@ span.radiobutton {
     content: "";
     position: absolute;
     display: none;
-    top: 5px;
+    top: 4px;
 	left: 4px;
 	width: 8px;
 	height: 8px;

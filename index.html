@@ -79,8 +79,8 @@
         </div><!--
      --><div class="content-box">
 
-            <h3 class="">Today</h3>
-            <span id="margin-data">22.02.2018</span>
+            <!--<h3 class="">Today</h3>-->
+            <!--<span id="margin-data">22.02.2018</span>-->
             <div class="tasks-content">
 
             </div>
@@ -99,61 +99,82 @@
                 </div>
                 <div class="pop-up-body">
                     <div class="form-group">
-                        <input type="text" class="input" id="new-task-name" placeholder="Add a new task" data-name="New task field">
+                        <label>
+                            Title:
+                            <input type="text" class="input" id="new-task-name" placeholder="Add a new task" data-name="New task field">
+                        </label>
                     </div>
                     <div class="form-group">
                         <!--<input type="text" class="input input-medium" id="add-to-project" placeholder="Add to #project" data-name="Project field">-->
-                        <div class='dropdown add-task-projects-list'>
-                            <div class='dropdown-triger'>
-                                <button class='button'>
-                                    <span class='value-of-select'>Select Project</span>
-                                    <span class="icon is-small">
+                        <label>
+                            Select Project:
+                            <div class='dropdown add-task-projects-list'>
+                                <div class='dropdown-triger'>
+                                    <button class='button'>
+                                        <span class='value-of-select'>Select Project</span>
+                                        <span class="icon is-small">
                                         <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
                                              role="img" viewBox="0 0 320 512">
                                             <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
                                         </svg>
                                     </span>
-                                </button>
-                            </div>
-                            <div class='dropdown-menu hidden'>
-                                <div class='dropdown-content'>
-                                    <a href="#Add task 1" class='dropdown-item'>Task 1</a>
-                                    <a href="#Add task 2" class='dropdown-item is-active'>Task 2</a>
-                                    <a href="#Add task 3" class='dropdown-item'>Task 3</a>
-                                    <a href="#Add task 4" class='dropdown-item'>Task 4</a>
-                                    <hr class="dropdown-divider">
-                                    <a href="#Add task 5" class='dropdown-item'>Task 5</a>
+                                    </button>
+                                </div>
+                                <div class='dropdown-menu hidden'>
+                                    <div class='dropdown-content'>
+                                        <a href="#Add task 1" class='dropdown-item'>Task 1</a>
+                                        <a href="#Add task 2" class='dropdown-item is-active'>Task 2</a>
+                                        <a href="#Add task 3" class='dropdown-item'>Task 3</a>
+                                        <a href="#Add task 4" class='dropdown-item'>Task 4</a>
+                                        <hr class="dropdown-divider">
+                                        <a href="#Add task 5" class='dropdown-item'>Task 5</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class='dropdown'>
-                            <div class='dropdown-triger'>
-                                <button class='button'>
-                                    <span class='value-of-select' id="priority">Select Priority</span>
-                                    <span class="icon is-small">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Select Priority:
+                            <div class='dropdown'>
+                                <div class='dropdown-triger'>
+                                    <button class='button'>
+                                        <span class='value-of-select' id="priority">Select Priority</span>
+                                        <span class="icon is-small">
                                         <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
-                                            role="img" viewBox="0 0 320 512">
+                                             role="img" viewBox="0 0 320 512">
                                             <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
                                         </svg>
                                     </span>
-                                </button>
-                            </div>
-                            <div class='dropdown-menu hidden'>
-                                <div class='dropdown-content'>
-                                    <a href="#" class='dropdown-item'>Priority 1</a>
-                                    <a href="#" class='dropdown-item'>Priority 2</a>
-                                    <a href="#" class='dropdown-item'>Priority 3</a>
+                                    </button>
+                                </div>
+                                <div class='dropdown-menu hidden'>
+                                    <div class='dropdown-content'>
+                                        <a href="#" class='dropdown-item'>Priority 1</a>
+                                        <a href="#" class='dropdown-item'>Priority 2</a>
+                                        <a href="#" class='dropdown-item'>Priority 3</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </label>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="input input-medium" id="due-date" placeholder="Due Date">
-                        <input type="text" class="input input-medium" id="reminder" placeholder="Reminder">
+                        <label>
+                            Due Data:
+                            <input type="text" class="input input-medium" id="due-date" placeholder="Due Date">
+                        </label>
                     </div>
                     <div class="form-group">
-                        <label for="description" aria-placeholder="Descrpitoon"></label>
-                        <textarea class="input" id="description" cols="100" rows="10" placeholder="Add a description" data-name="Description cannot be empty"></textarea>
+                        <label>
+                            Reminder:
+                            <input type="text" class="input input-medium" id="reminder" placeholder="Reminder">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" aria-placeholder="Description">
+                            Description:
+                            <textarea class="input" id="description" cols="100" rows="10" placeholder="Add a description" data-name="Description cannot be empty"></textarea>
+                        </label>
                     </div>
                     <div class="form-group comment">
                         <div class="avatar-user">
@@ -191,37 +212,53 @@
                 </div>
                 <div class="pop-up-body">
                     <div class="form-group">
-                        <input type="text" class="new-task-name input" placeholder="Add a new task" data-name="New task field">
+                        <label>
+                            Task Title:
+                            <input type="text" class="new-task-name input" placeholder="Add a new task" data-name="New task field">
+                        </label>
                     </div>
                     <div class="form-group">
-                        <div class='dropdown'>
-                            <div class='dropdown-triger'>
-                                <button class='button'>
-                                    <span class='priority value-of-select'>Select Priority</span>
-                                    <span class="icon is-small">
+                        <label>
+                            Priority:
+                            <div class='dropdown'>
+                                <div class='dropdown-triger'>
+                                    <button class='button'>
+                                        <span class='priority value-of-select'>Select Priority</span>
+                                        <span class="icon is-small">
                                         <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fas" data-icon="angle-down"
                                              role="img" viewBox="0 0 320 512">
                                             <path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
                                         </svg>
                                     </span>
-                                </button>
-                            </div>
-                            <div class='dropdown-menu hidden'>
-                                <div class='dropdown-content'>
-                                    <a href="#" class='dropdown-item'>Priority 1</a>
-                                    <a href="#" class='dropdown-item'>Priority 2</a>
-                                    <a href="#" class='dropdown-item'>Priority 3</a>
+                                    </button>
+                                </div>
+                                <div class='dropdown-menu hidden'>
+                                    <div class='dropdown-content'>
+                                        <a href="#" class='dropdown-item'>Priority 1</a>
+                                        <a href="#" class='dropdown-item'>Priority 2</a>
+                                        <a href="#" class='dropdown-item'>Priority 3</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </label>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="due-date input input-medium" placeholder="Due Date">
-                        <input type="text" class="reminder input input-medium" placeholder="Reminder">
+                        <label>
+                            Due Data:
+                            <input type="text" class="due-date input input-medium" placeholder="Due Date">
+                        </label>
                     </div>
                     <div class="form-group">
-                        <label for="description" aria-placeholder="Descrpitoon"></label>
-                        <textarea class="description input" cols="100" rows="10" placeholder="Add a description" data-name="Description cannot be empty"></textarea>
+                        <label>
+                            Reminder:
+                            <input type="text" class="reminder input input-medium" placeholder="Reminder">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" aria-placeholder="description">
+                            Description:
+                            <textarea class="description input" cols="100" rows="10" placeholder="Add a description" data-name="Description cannot be empty"></textarea>
+                        </label>
                     </div>
 
                 </div>
